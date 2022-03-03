@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +16,11 @@ import { ArtistsComponent } from './pages/artists/artists.component';
 import { ArtistItemComponent } from './pages/artists/artist-item/artist-item.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { AlbumItemComponent } from './pages/albums/album-item/album-item.component';
+import { artistsReducer } from './store/artists.reducer';
+import { albumsReducer } from './store/albums.reducer';
+import { ArtistsEffects } from './store/artists.effects';
+import { AlbumsEffects } from './store/albums.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,10 +41,17 @@ import { AlbumItemComponent } from './pages/albums/album-item/album-item.compone
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    HttpClientModule,
+    StoreModule.forRoot({
+      artists: artistsReducer,
+      albums: albumsReducer,
+    }, {}),
+    EffectsModule.forRoot([
+      ArtistsEffects,
+      AlbumsEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
