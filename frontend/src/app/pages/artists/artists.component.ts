@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Artist } from '../../models/artist.model';
+import { Store } from '@ngrx/store';
+import { fetchArtistsRequest } from '../../store/artists.actions';
+import { AppState } from '../../store/types';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-artists',
@@ -6,10 +12,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artists.component.css']
 })
 export class ArtistsComponent implements OnInit {
+  artists: Observable<Artist[]>;
+  loading: Observable<boolean>;
+  error: Observable<null | string>;
+  env = environment;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private store: Store<AppState>) {
+    this.artists = store.select(state => state.artists.artists);
+    this.loading = store.select(state => state.artists.fetchLoading);
+    this.error = store.select(state => state.artists.fetchError);
   }
 
+  ngOnInit(): void {
+    this.store.dispatch(fetchArtistsRequest());
+  }
 }

@@ -13,23 +13,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ArtistsComponent } from './pages/artists/artists.component';
-import { ArtistItemComponent } from './pages/artists/artist-item/artist-item.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
-import { AlbumItemComponent } from './pages/albums/album-item/album-item.component';
 import { artistsReducer } from './store/artists.reducer';
 import { albumsReducer } from './store/albums.reducer';
 import { ArtistsEffects } from './store/artists.effects';
 import { AlbumsEffects } from './store/albums.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { FlexModule } from '@angular/flex-layout';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     ArtistsComponent,
-    ArtistItemComponent,
     AlbumsComponent,
-    AlbumItemComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
       ArtistsEffects,
       AlbumsEffects,
     ]),
+    MatCardModule,
+    FlexModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
