@@ -27,53 +27,51 @@ const run = async () => {
     });
 
     await Album.create({
-            artist: Ariana,
-            title: 'Dangerous women',
-            releaseDate: '2018',
-            image: 'dangerous-woman.jpeg'
-        },
-        {
-            artist: Ariana,
-            title: 'Positions',
-            releaseDate: '2019',
-            image: 'positions.jpeg'
-        },
-        {
-            artist: Ariana,
-            title: 'Sweetener',
-            releaseDate: '2015',
-            image: 'sweetener.png'
-        }, {
-            artist: Malone,
-            title: 'M334',
-            releaseDate: '2021',
-            image: 'm334.jpeg'
-        }, {
-            artist: Malone,
-            title: 'Stoney',
-            releaseDate: '2018',
-            image: 'stoney.jpeg'
-        }, {
-            artist: Malone,
-            title: 'Hollywood Bleeding',
-            releaseDate: '2016',
-            image: 'hollywood-bleeding.jpeg'
-        }, {
-            artist: LilNasX,
-            title: 'Industry Baby',
-            releaseDate: '2020',
-            image: 'industry-baby.jpeg'
-        }, {
-            artist: LilNasX,
-            title: 'Canvas',
-            releaseDate: '2016',
-            image: 'canvas-poster.jpeg'
-        }, {
-            artist: LilNasX,
-            title: 'Montero',
-            releaseDate: '2018',
-            image: 'montero.jpeg'
-        });
+        artist: Ariana,
+        title: 'Dangerous women',
+        releaseDate: '2018',
+        image: 'dangerous-woman.jpeg'
+    }, {
+        artist: Ariana,
+        title: 'Positions',
+        releaseDate: '2019',
+        image: 'positions.jpeg'
+    }, {
+        artist: Ariana,
+        title: 'Sweetener',
+        releaseDate: '2015',
+        image: 'sweetener.png'
+    }, {
+        artist: Malone,
+        title: 'M334',
+        releaseDate: '2021',
+        image: 'm334.jpeg'
+    }, {
+        artist: Malone,
+        title: 'Stoney',
+        releaseDate: '2018',
+        image: 'stoney.jpeg'
+    }, {
+        artist: Malone,
+        title: 'Hollywood Bleeding',
+        releaseDate: '2016',
+        image: 'hollywood-bleeding.jpeg'
+    }, {
+        artist: LilNasX,
+        title: 'Industry Baby',
+        releaseDate: '2020',
+        image: 'industry-baby.jpeg'
+    }, {
+        artist: LilNasX,
+        title: 'Canvas',
+        releaseDate: '2016',
+        image: 'canvas-poster.jpeg'
+    }, {
+        artist: LilNasX,
+        title: 'Montero',
+        releaseDate: '2018',
+        image: 'montero.jpeg'
+    });
 
     await mongoose.connection.close();
 };
