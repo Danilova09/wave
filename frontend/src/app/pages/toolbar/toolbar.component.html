@@ -9,16 +9,22 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <a routerLink="/" class="logo">Music</a>
+    <mat-toolbar color="primary" fxLayout="row"
+                 fxLayoutAlign="space-between center">
+      <div>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <a routerLink="/" class="logo">Music</a>
+      </div>
+      <nav>
+        <a mat-raised-button color="primary" routerLink="/register">REGISTER</a>
+      </nav>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

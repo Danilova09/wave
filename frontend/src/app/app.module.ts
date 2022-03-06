@@ -22,6 +22,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { FlexModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RegisterFormComponent } from './pages/register-form/register-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { ValidateEqualModule } from 'ng-validate-equal';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ToolbarComponent,
     ArtistsComponent,
     AlbumsComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatListModule,
     HttpClientModule,
+    FormsModule,
+    ValidateEqualModule,
     StoreModule.forRoot({
       artists: artistsReducer,
       albums: albumsReducer,
@@ -52,6 +60,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     FlexModule,
     MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
