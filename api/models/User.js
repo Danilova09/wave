@@ -3,6 +3,11 @@ const bcrypt = require('bcrypt');
 const {nanoid} = require("nanoid");
 
 const UserSchema = new mongoose.Schema({
+    avatar: String | null,
+    displayName: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
