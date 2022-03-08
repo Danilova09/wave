@@ -1,3 +1,8 @@
+.main-block {
+  background: #eeeeee;
+  padding-top: 50px;
+  height: 100vh;
+}
 .form-block {
   display: block;
   margin: 50px auto;

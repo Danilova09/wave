@@ -1,5 +1,5 @@
-<div class="form-block">
-  <mat-card>
+<div class="main-block">
+  <mat-card class="form-block">
     <form fxLayout="column" fxLayoutAlign="center" #f="ngForm" (ngSubmit)="onSubmit()">
       <h3>Register</h3>
       <mat-form-field appearance="outline">
@@ -19,6 +19,9 @@
         <mat-error *ngIf="email.touched && email.hasError('email')">
           Enter valid email!
         </mat-error>
+        <mat-error *ngIf="email.touched && email.hasError('serverError')">
+          {{ email.getError('serverError') }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
@@ -34,6 +37,10 @@
         <mat-error *ngIf="confirmPassword.touched && confirmPassword.hasError('notEqual')">
           Password doesn't match!
         </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Avatar</mat-label>
+        <app-file-input name="avatar" ngModel></app-file-input>
       </mat-form-field>
       <button mat-raised-button color="primary">REGISTER</button>
     </form>

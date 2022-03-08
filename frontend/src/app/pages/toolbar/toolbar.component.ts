@@ -17,5 +17,4 @@ export class ToolbarComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
 }

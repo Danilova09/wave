@@ -1,10 +1,12 @@
-<div class="loading-block" style="display: flex; justify-content: center; align-items: center;" *ngIf="(loading | async) else artistsArea">
+<div class="loading-block" style="display: flex; justify-content: center; align-items: center;"
+     *ngIf="(loading | async) else artistsArea">
   <mat-spinner color="primary" style="margin-top: 50px;"></mat-spinner>
 </div>
 <ng-template #artistsArea>
-  <div style="padding: 50px;" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="15px" ngClass.gt-xs="ml-15">
+  <div class="artists-list" style="padding: 50px;" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="15px" ngClass.gt-xs="ml-15">
     <mat-card style="cursor: pointer;" [routerLink]="['/albums']" [queryParams]="{ artist: artist.id }"
-              *ngFor="let artist of (artists | async)" fxFlex.sm="0 1 calc(50%-15px)" fxFlex.md="0 1 calc(33%-15px)" fxFlex.gt-md="0 1 calc(25%-15px)">
+              *ngFor="let artist of (artists | async)" fxFlex.sm="0 1 calc(50%-15px)" fxFlex.md="0 1 calc(33%-15px)"
+              fxFlex.gt-md="0 1 calc(25%-15px)">
       <img mat-card-image [src]="[env.artistsUploadPath + artist.image]" [alt]="artist.name">
       <mat-card-content>
         <mat-card-title>{{ artist.name }}</mat-card-title>

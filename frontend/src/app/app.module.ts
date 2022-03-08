@@ -27,6 +27,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ValidateEqualModule } from 'ng-validate-equal';
+import { FileInputComponent } from './ui/file-input/file-input.component';
+import { usersReducer } from './store/users.reducer';
+import { UsersEffects } from './store/users.effects';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     ArtistsComponent,
     AlbumsComponent,
     RegisterFormComponent,
+    FileInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,19 +54,22 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     HttpClientModule,
     FormsModule,
     ValidateEqualModule,
-    StoreModule.forRoot({
-      artists: artistsReducer,
-      albums: albumsReducer,
-    }, {}),
-    EffectsModule.forRoot([
-      ArtistsEffects,
-      AlbumsEffects,
-    ]),
+    MatSnackBarModule,
     MatCardModule,
     FlexModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
+    StoreModule.forRoot({
+      artists: artistsReducer,
+      albums: albumsReducer,
+      users: usersReducer
+    }, {}),
+    EffectsModule.forRoot([
+      ArtistsEffects,
+      AlbumsEffects,
+      UsersEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

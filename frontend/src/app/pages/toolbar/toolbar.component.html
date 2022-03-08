@@ -1,15 +1,15 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Artists</a>
+      <a mat-list-item routerLink="/" routerLinkActive="active">Artists</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" fxLayout="row"
+    <mat-toolbar class="toolbar" fxLayout="row"
                  fxLayoutAlign="space-between center">
       <div>
         <button
@@ -20,7 +20,7 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <a routerLink="/" class="logo">Music</a>
+        <a class="logo" routerLink="/">Wave</a>
       </div>
       <nav>
         <a mat-raised-button color="primary" routerLink="/register">REGISTER</a>
