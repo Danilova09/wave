@@ -2,7 +2,9 @@
 .DS_Store/
 node_modules/
 public/uploads/images/avatars/*
-!public/uploads/images/artists/.gitkeep
-!public/uploads/images/albums/.gitkeep
-!public/uploads/images/avatars/.gitkeep
+public/uploads/images/artists/*
+public/uploads/images/albums/*
+#!public/uploads/images/artists/.gitkeep
+#!public/uploads/images/albums/.gitkeep
+#!public/uploads/images/avatars/.gitkeep
 

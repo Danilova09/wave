@@ -14,6 +14,15 @@ export interface User {
   token: string,
 }
 
+export interface LoginUserData {
+  email: string,
+  password: string,
+}
+
+export interface LoginError {
+  error: string
+}
+
 export interface FieldError {
   message: string,
 }

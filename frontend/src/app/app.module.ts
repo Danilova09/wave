@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { ToolbarComponent } from './pages/toolbar/toolbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,10 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ArtistsComponent } from './pages/artists/artists.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
-import { artistsReducer } from './store/artists.reducer';
-import { albumsReducer } from './store/albums.reducer';
-import { ArtistsEffects } from './store/artists.effects';
-import { AlbumsEffects } from './store/albums.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { FlexModule } from '@angular/flex-layout';
@@ -28,9 +22,11 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ValidateEqualModule } from 'ng-validate-equal';
 import { FileInputComponent } from './ui/file-input/file-input.component';
-import { usersReducer } from './store/users.reducer';
-import { UsersEffects } from './store/users.effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AppStoreModule } from './app-store.module';
+import { LoginComponent } from './pages/login/login.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 
 @NgModule({
   declarations: [
@@ -40,10 +36,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AlbumsComponent,
     RegisterFormComponent,
     FileInputComponent,
+    LoginComponent,
+    CenteredCardComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
@@ -60,16 +57,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    StoreModule.forRoot({
-      artists: artistsReducer,
-      albums: albumsReducer,
-      users: usersReducer
-    }, {}),
-    EffectsModule.forRoot([
-      ArtistsEffects,
-      AlbumsEffects,
-      UsersEffects,
-    ]),
+    AppRoutingModule,
+    AppStoreModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
