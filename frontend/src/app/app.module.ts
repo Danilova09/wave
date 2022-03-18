@@ -27,6 +27,8 @@ import { AppStoreModule } from './app-store.module';
 import { LoginComponent } from './pages/login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
+import { TracksComponent } from './pages/tracks/tracks.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
     FileInputComponent,
     LoginComponent,
     CenteredCardComponent,
+    TracksComponent,
+    ImagePipe,
   ],
   imports: [
     BrowserModule,

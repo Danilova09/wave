@@ -59,7 +59,7 @@ router.get('/byAlbum/:albumID', async (req, res, next) => {
             album:  albumInfo,
             tracks,
         }
-        return res.send({tracksByAlbum});
+        return res.send(tracksByAlbum);
     } catch (e) {
         next(e);
     }

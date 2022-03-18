@@ -1,0 +1,13 @@
+<div class="tracks-block">
+  <div class="artist-block">
+    <h2>{{(trackData | async)?.album?.title }}  {{(trackData | async)?.album?.releaseDate }}</h2>
+    <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image" [alt]="(trackData | async)?.artist?.name">
+  </div>
+  <mat-list role="list" class="tracks-list">
+    <mat-list-item class="list-item"  role="listitem"  *ngFor="let track of (trackData | async)?.tracks">
+        <mat-icon style="width: 5%; cursor: pointer">play_circle_outline</mat-icon>
+        <span style="width: 35%; cursor: pointer">{{ track?.title }}</span>
+        <span style="width: 60%">{{ track?.duration }}</span>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -1,17 +1,9 @@
-export class Album {
-  constructor(
-    public id: string,
-    public title: string,
-    public artist: string,
-    public releaseDate: string,
-    public image: string,
-  ) {}
-}
+import { Artist } from './artist.model';
 
-export interface ApiAlbumData {
+export interface Album {
   _id: string,
   title: string,
-  artist: string,
-  image: string,
+  artist: Artist,
   releaseDate: string,
+  image: string,
 }

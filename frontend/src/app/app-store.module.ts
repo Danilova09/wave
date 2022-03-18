@@ -8,6 +8,8 @@ import { artistsReducer } from './store/artists.reducer';
 import { albumsReducer } from './store/albums.reducer';
 import { ArtistsEffects } from './store/artists.effects';
 import { AlbumsEffects } from './store/albums.effects';
+import { tracksReducer } from './store/tracks.reducer';
+import { TracksEffects } from './store/tracks.effects';
 
 const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -19,7 +21,8 @@ const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
 const reducers ={
   artists: artistsReducer,
   albums: albumsReducer,
-  users: usersReducer
+  users: usersReducer,
+  tracks: tracksReducer,
 }
 
 const metaReducers: MetaReducer[] = [localStorageSyncReducer];
@@ -28,6 +31,7 @@ const effects = [
   UsersEffects,
   ArtistsEffects,
   AlbumsEffects,
+  TracksEffects,
 ]
 
 @NgModule({

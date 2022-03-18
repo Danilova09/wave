@@ -1,0 +1,24 @@
+.tracks-block {
+  display: block;
+  max-width: 900px;
+  margin: auto 15px;
+  padding: 50px 15px 0 40px;
+}
+
+.artist-block {
+  display: block;
+  width: 400px;
+}
+
+.tracks-list {
+  margin: 30px 0 80px 0;
+}
+
+.artist-img {
+  display: block;
+  max-width: 300px;
+}
+
+.list-item {
+  border: 1px solid #c1c1c1;
+}

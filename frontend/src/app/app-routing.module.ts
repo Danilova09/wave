@@ -4,12 +4,14 @@ import { ArtistsComponent } from './pages/artists/artists.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { RegisterFormComponent } from './pages/register-form/register-form.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TracksComponent } from './pages/tracks/tracks.component';
 
 const routes: Routes = [
   {path: '', component: ArtistsComponent},
   {path: 'albums', component: AlbumsComponent},
   {path: 'register', component: RegisterFormComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'tracks/byAlbum/:albumId', component: TracksComponent},
 ];
 
 @NgModule({

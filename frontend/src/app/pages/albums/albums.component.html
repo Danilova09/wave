@@ -14,8 +14,7 @@
           <mat-card-subtitle>Released: {{ album.releaseDate }}</mat-card-subtitle>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button mat-button [routerLink]="['/tracks/byAlbum/', album._id]">TRACK-LIST</button>
         </mat-card-actions>
       </mat-card>
     </div>
