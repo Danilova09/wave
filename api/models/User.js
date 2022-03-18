@@ -13,9 +13,10 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
         validate: {
-            validator: async value => {
+            validator: async function (value) {
+                if (!this.isModified('email')) return true;
                 const user = await User.findOne({email: value});
-                if (user) return false;
+                return !user;
             },
             message: 'This user is already registered'
         }
@@ -27,6 +28,12 @@ const UserSchema = new mongoose.Schema({
     token: {
         type: String,
         required: true,
+    },
+    role: {
+        type: String,
+        required: true,
+        default: 'user',
+        enum: ['user', 'admin'],
     }
 });
 

@@ -4,6 +4,8 @@ const {nanoid} = require('nanoid');
 const multer = require('multer');
 const config = require('../config');
 const Album = require("../models/Album");
+const auth = require("../middleware/auth");
+const permit = require("../middleware/permit");
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -30,7 +32,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/', upload.single('image'), async (req, res, next) => {
+router.post('/', auth, permit('admin'),upload.single('image'), async (req, res, next) => {
     try {
         if (!req.body.title || !req.body.artist || !req.file || !req.body.releaseDate) {
             return res.status(400).send({error: 'Fill in required fields'});

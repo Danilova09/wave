@@ -20,7 +20,16 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 
-router.post('/', upload.single('avatar') ,async (req, res, next) => {
+router.get('/', async (req, res, next) => {
+    try {
+        const users = await User.find();
+        res.send(users);
+    } catch (e) {
+        next(e);
+    }
+})
+
+router.post('/', upload.single('avatar'), async (req, res, next) => {
     try {
         const userData = {
             email: req.body.email,
@@ -60,10 +69,24 @@ router.post('/sessions', async (req, res, next) => {
         }
         user.generateToken();
         await user.save();
-        return res.send({token: user.token});
+        return res.send(user);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.delete('/sessions', async (req, res, next) => {
+    try {
+        const token = req.get('Authorization');
+        const user = await User.findOne({token});
+        if (!user) return res.send({error: 'Token not found'});
+        user.generateToken();
+        await user.save();
+
+        res.send({message: 'Logged out'});
     } catch (e) {
         next(e);
     }
-});
+})
 
 module.exports = router;

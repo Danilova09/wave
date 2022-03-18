@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const config = require("./config");
 const Artist = require("./models/Artist");
 const Album = require("./models/Album");
+const User = require("./models/User");
+const Track = require("./models/Track");
 
 const run = async () => {
     await mongoose.connect(config.mongo.db, config.mongo.options);
@@ -47,7 +49,14 @@ const run = async () => {
         }
     );
 
-    await Album.create({
+    const [DangerousWomen, Positions, Sweetener,
+        BeerbongsAndBentleys, Stoney, HollywoodBleeding,
+        IndustryBaby, Canvas, Montero,
+        HappierThenEver, WhenWeAllFallAsleep, DontSmileAtMe,
+        Dawn, AfterHours, Starboy,
+        Nectar, Ballads1, InTongues,
+        FutureNostalgia, ClubFutureNostalgia, NewRules,
+        Rare, Revival, StarsDance] = await Album.create({
             artist: Ariana,
             title: 'Dangerous women',
             releaseDate: '2016',
@@ -152,7 +161,7 @@ const run = async () => {
             title: 'New Rules',
             releaseDate: '2017',
             image: 'new-rules.jpg'
-        } , {
+        }, {
             artist: SelenaGomez,
             title: 'Rare',
             releaseDate: '2020',
@@ -169,6 +178,156 @@ const run = async () => {
             image: 'stars-dance.jpg'
         }
     );
+
+
+    await Track.create({
+            title: 'Moonlight',
+            album: DangerousWomen,
+            duration: '3:22',
+        }, {
+            title: 'Dangerous Women',
+            album: DangerousWomen,
+            duration: '3:55',
+        }, {
+            title: 'Be Alright',
+            album: DangerousWomen,
+            duration: '2:59',
+        }, {
+            title: 'Into You',
+            album: DangerousWomen,
+            duration: '4:04',
+        }, {
+            title: 'Side to Side',
+            album: DangerousWomen,
+            duration: '3:46',
+        },
+
+        {
+            title: 'Shut UP',
+            album: Positions,
+            duration: '2:37',
+        }, {
+            title: '34+35',
+            album: Positions,
+            duration: '2:53',
+        }, {
+            title: 'Motive',
+            album: Positions,
+            duration: '2:47',
+        }, {
+            title: 'Just like Magic',
+            album: Positions,
+            duration: '2:29',
+        }, {
+            title: 'Of the Table',
+            album: Positions,
+            duration: '3:59',
+        },
+
+        {
+            title: 'Raindrops(An Angel Cried)',
+            album: Sweetener,
+            duration: '0:37',
+        }, {
+            title: 'Blazed',
+            album: Sweetener,
+            duration: '3:16',
+        }, {
+            title: 'The light is Coming',
+            album: Sweetener,
+            duration: '3:48',
+        }, {
+            title: 'R.E.M',
+            album: Sweetener,
+            duration: '4:05',
+        }, {
+            title: 'God Is a Woman',
+            album: Sweetener,
+            duration: '3:17',
+        },
+
+        {
+            title: 'Paranoid',
+            album: BeerbongsAndBentleys,
+            duration: '3:42',
+        }, {
+            title: 'Rich & Sad',
+            album: BeerbongsAndBentleys,
+            duration: '3:26',
+        }, {
+            title: 'Takin Shots',
+            album: BeerbongsAndBentleys,
+            duration: '3:37',
+        }, {
+            title: 'Over Now',
+            album: BeerbongsAndBentleys,
+            duration: '4:07',
+        }, {
+            title: 'Better now',
+            album: BeerbongsAndBentleys,
+            duration: '3:51',
+        },
+
+        {
+            title: 'Broken Whiskey Glass',
+            album: Stoney,
+            duration: '3:54',
+        }, {
+            title: 'Deja Vu',
+            album: Stoney,
+            duration: '3:54',
+        }, {
+            title: 'Cold',
+            album: Stoney,
+            duration: '4:29',
+        }, {
+            title: 'I Fall Apart',
+            album: Stoney,
+            duration: '3:43',
+        }, {
+            title: 'Go Flex',
+            album: Stoney,
+            duration: '3:00',
+        },
+
+        {
+            title: "Hollywood's Bleeding",
+            album: HollywoodBleeding,
+            duration: '2:36',
+        }, {
+            title: 'Enemies',
+            album: HollywoodBleeding,
+            duration: '3:17',
+        }, {
+            title: 'A Thousand Bad Times',
+            album: HollywoodBleeding,
+            duration: '3:41',
+        }, {
+            title: 'Die for Me',
+            album: HollywoodBleeding,
+            duration: '4:05',
+        }, {
+            title: 'Take What You Want',
+            album: HollywoodBleeding,
+            duration: '3:50',
+        }
+    )
+
+    await User.create({
+        avatar: null,
+        displayName: 'user',
+        email: 'user@shop.com',
+        password: 'user',
+        token: 'user',
+        role: 'user',
+    }, {
+        avatar: null,
+        displayName: 'admin',
+        email: 'admin@shop.com',
+        password: 'admin',
+        token: 'admin',
+        role: 'admin'
+    })
 
     await mongoose.connection.close();
 };
