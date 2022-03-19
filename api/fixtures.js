@@ -200,9 +200,7 @@ const run = async () => {
             title: 'Side to Side',
             album: DangerousWomen,
             duration: '3:46',
-        },
-
-        {
+        }, {
             title: 'Shut UP',
             album: Positions,
             duration: '2:37',
@@ -222,9 +220,7 @@ const run = async () => {
             title: 'Of the Table',
             album: Positions,
             duration: '3:59',
-        },
-
-        {
+        }, {
             title: 'Raindrops(An Angel Cried)',
             album: Sweetener,
             duration: '0:37',
@@ -244,9 +240,7 @@ const run = async () => {
             title: 'God Is a Woman',
             album: Sweetener,
             duration: '3:17',
-        },
-
-        {
+        }, {
             title: 'Paranoid',
             album: BeerbongsAndBentleys,
             duration: '3:42',
@@ -266,9 +260,7 @@ const run = async () => {
             title: 'Better now',
             album: BeerbongsAndBentleys,
             duration: '3:51',
-        },
-
-        {
+        }, {
             title: 'Broken Whiskey Glass',
             album: Stoney,
             duration: '3:54',
@@ -288,9 +280,7 @@ const run = async () => {
             title: 'Go Flex',
             album: Stoney,
             duration: '3:00',
-        },
-
-        {
+        }, {
             title: "Hollywood's Bleeding",
             album: HollywoodBleeding,
             duration: '2:36',
@@ -310,8 +300,7 @@ const run = async () => {
             title: 'Take What You Want',
             album: HollywoodBleeding,
             duration: '3:50',
-        },
-        {
+        }, {
             title: 'Montero',
             album: Montero,
             duration: '2:18',
@@ -331,9 +320,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: Montero,
             duration: '2:49',
-        },
-
-        {
+        }, {
             title: 'Montero',
             album: IndustryBaby,
             duration: '2:18',
@@ -353,9 +340,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: IndustryBaby,
             duration: '2:49',
-        },
-
-        {
+        }, {
             title: 'Montero',
             album: Canvas,
             duration: '2:18',
@@ -375,9 +360,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: Canvas,
             duration: '2:49',
-        },
-
-        {
+        }, {
             title: 'Getting Older',
             album: HappierThenEver,
             duration: '4:04',
@@ -397,9 +380,7 @@ const run = async () => {
             title: 'Not My Responsibility',
             album: HappierThenEver,
             duration: '3:48',
-        },
-
-        {
+        }, {
             title: 'Bad Guy',
             album: WhenWeAllFallAsleep,
             duration: '3:14',
@@ -419,9 +400,7 @@ const run = async () => {
             title: 'bury a friend',
             album: WhenWeAllFallAsleep,
             duration: '2:50',
-        },
-
-        {
+        }, {
             title: 'COPYCAT',
             album: DontSmileAtMe,
             duration: '3:15',
@@ -441,9 +420,7 @@ const run = async () => {
             title: '&burn',
             album: DontSmileAtMe,
             duration: '2:59',
-        },
-
-        {
+        }, {
             title: 'How Do I Make You Love Me',
             album: Dawn,
             duration: '3:35',
@@ -463,9 +440,7 @@ const run = async () => {
             title: 'Starry Eyes',
             album: Dawn,
             duration: '2:28',
-        },
-
-        {
+        }, {
             title: 'Alone Again',
             album: AfterHours,
             duration: '4:10',
@@ -485,15 +460,13 @@ const run = async () => {
             title: 'Blinding Lights',
             album: AfterHours,
             duration: '3:20',
-        },
-
-        {
+        }, {
             title: 'Starboy',
             album: Starboy,
             duration: '3:50',
         }, {
             title: 'False Alarm',
-            album:  Starboy,
+            album: Starboy,
             duration: '3:40',
         }, {
             title: 'Rockin',
@@ -505,208 +478,189 @@ const run = async () => {
             duration: '3:26',
         }, {
             title: 'Sidewalks',
-            album:  Starboy,
+            album: Starboy,
             duration: '3:51',
-        },
-
-        {
+        }, {
             title: 'Ew',
             album: Nectar,
             duration: '3:28',
         }, {
             title: 'Tick Tock',
-            album:   Nectar,
+            album: Nectar,
             duration: '2:13',
         }, {
             title: 'Upgrade',
-            album:  Nectar,
+            album: Nectar,
             duration: '1:30',
         }, {
             title: 'Run',
-            album:  Nectar,
+            album: Nectar,
             duration: '3:15',
         }, {
             title: 'Pretty Boy',
-            album:   Nectar,
+            album: Nectar,
             duration: '2:37',
-        },
-
-        {
+        }, {
             title: 'ATTENTION',
             album: Ballads1,
             duration: '2:09',
         }, {
             title: 'TEST DRIVE',
-            album:   Ballads1,
+            album: Ballads1,
             duration: '3:00',
         }, {
             title: 'CANT GET OVER YOU',
-            album:  Ballads1,
+            album: Ballads1,
             duration: '1:47',
         }, {
             title: 'WHY AM I STILL IN LA',
-            album:  Ballads1,
+            album: Ballads1,
             duration: '3:20',
         }, {
             title: 'COME THRU',
-            album:   Ballads1,
+            album: Ballads1,
             duration: '2:33',
-        },
-
-        {
+        }, {
             title: 'Will He',
             album: InTongues,
             duration: '3:22',
         }, {
             title: 'Demons',
-            album:   InTongues,
+            album: InTongues,
             duration: '2:57',
         }, {
             title: 'Bitter',
-            album:  InTongues,
+            album: InTongues,
             duration: '2:35',
         }, {
             title: 'Pills',
-            album:  InTongues,
+            album: InTongues,
             duration: '3:07',
         }, {
             title: 'Window',
-            album:   InTongues,
+            album: InTongues,
             duration: '2:33',
-        },
-
-        {
+        }, {
             title: 'Future Nostalgia',
             album: FutureNostalgia,
             duration: '3:05',
         }, {
             title: 'Cool',
-            album:   FutureNostalgia,
+            album: FutureNostalgia,
             duration: '3:30',
         }, {
             title: 'Levitaiting',
-            album:  FutureNostalgia,
+            album: FutureNostalgia,
             duration: '3:24',
         }, {
             title: 'Hallucinate',
-            album:  FutureNostalgia,
+            album: FutureNostalgia,
             duration: '3:29',
         }, {
             title: 'Break My Heart',
-            album:   FutureNostalgia,
+            album: FutureNostalgia,
             duration: '2:46',
-        },
-
-        {
+        }, {
             title: 'Levitating (The Blessed Madonna Remix) (featuring Madonna & Missy Elliott)',
             album: ClubFutureNostalgia,
             duration: '4:10',
         }, {
             title: 'Hallucinate (Paul Woolford Extended Remix)',
-            album:   ClubFutureNostalgia,
+            album: ClubFutureNostalgia,
             duration: '5:13',
         }, {
             title: 'Don\'t Start Now (Kaytranada Remix)',
-            album:  ClubFutureNostalgia,
+            album: ClubFutureNostalgia,
             duration: '4:27',
         }, {
             title: 'Physical (Mark Ronson Remix) (featuring Gwen Stefani)',
-            album:  ClubFutureNostalgia,
+            album: ClubFutureNostalgia,
             duration: '3:06',
         }, {
             title: 'Break My Heart(Remix)',
-            album:   ClubFutureNostalgia,
+            album: ClubFutureNostalgia,
             duration: '2:46',
-        },
-
-        {
+        }, {
             title: 'Genesis',
             album: DuaLipaCompleteEdition,
             duration: '4:10',
         }, {
             title: 'Lost in Your Light',
-            album:   DuaLipaCompleteEdition,
+            album: DuaLipaCompleteEdition,
             duration: '5:13',
         }, {
             title: 'Hotter Than Hell',
-            album:  DuaLipaCompleteEdition,
+            album: DuaLipaCompleteEdition,
             duration: '4:27',
         }, {
             title: 'New Rules',
-            album:  DuaLipaCompleteEdition,
+            album: DuaLipaCompleteEdition,
             duration: '3:06',
         }, {
             title: 'IDGAF',
-            album:   DuaLipaCompleteEdition,
+            album: DuaLipaCompleteEdition,
             duration: '2:46',
-        },
-
-        {
+        }, {
             title: 'Rare',
             album: Rare,
             duration: '3:41',
         }, {
             title: 'Look at Her Now',
-            album:   Rare,
+            album: Rare,
             duration: '2:43',
         }, {
             title: 'Ring',
-            album:  Rare,
+            album: Rare,
             duration: '2:29',
         }, {
             title: 'People You Know',
-            album:  Rare,
+            album: Rare,
             duration: '3:15',
         }, {
             title: 'Crowded Room',
-            album:   Rare,
+            album: Rare,
             duration: '3:06',
-        },
-
-        {
+        }, {
             title: 'Revival',
             album: Revival,
             duration: '4:06',
         }, {
             title: 'Hand to Myself',
-            album:   Revival,
-            duration: '3:21',
-        }, {
-            title: 'Sober',
-            album:  Revival,
-            duration: '3:15',
-        }, {
-            title: 'Camouflage',
-            album:  Revival,
-            duration: '4:09',
-        }, {
-            title: 'Survivors',
-            album:   Revival,
-            duration: '3:42',
-        },
-
-        {
-            title: 'Revival',
             album: Revival,
-            duration: '4:06',
-        }, {
-            title: 'Hand to Myself',
-            album:   Revival,
             duration: '3:21',
         }, {
             title: 'Sober',
-            album:  Revival,
+            album: Revival,
             duration: '3:15',
         }, {
             title: 'Camouflage',
-            album:  Revival,
+            album: Revival,
             duration: '4:09',
         }, {
             title: 'Survivors',
-            album:   Revival,
+            album: Revival,
             duration: '3:42',
+        }, {
+            title: 'Birthday',
+            album: StarsDance,
+            duration: '3:21',
+        }, {
+            title: 'Stars Dance',
+            album: StarsDance,
+            duration: '3:38',
+        }, {
+            title: 'Come & Get It',
+            album: StarsDance,
+            duration: '3:52',
+        }, {
+            title: 'Save the Day',
+            album: StarsDance,
+            duration: '3:53',
+        }, {
+            title: 'Write Your Name',
+            album: StarsDance,
+            duration: '3:17',
         },
-
     )
 
     await User.create({
