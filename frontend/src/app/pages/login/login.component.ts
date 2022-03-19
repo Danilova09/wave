@@ -9,7 +9,7 @@ import { loginUserRequest } from '../../store/users.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   @ViewChild('f') form!: NgForm;

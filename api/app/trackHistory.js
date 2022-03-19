@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/', auth, async (req, res, next) => {
     try {
-        const trackHistory = await TrackHistory.find({user: req.user._id}).populate('track');
+        const trackHistory = await TrackHistory.find({user: req.user._id}).sort({datetime: -1}).populate('track');
         return res.send(trackHistory);
     } catch (error) {
         next(error);

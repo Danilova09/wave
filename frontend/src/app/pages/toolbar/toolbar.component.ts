@@ -13,7 +13,6 @@ import { logoutUserRequest } from '../../store/users.actions';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent {
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

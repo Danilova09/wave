@@ -8,7 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HelpersService {
-  constructor(private snackbar: MatSnackBar) { }
+  constructor(private snackbar: MatSnackBar) {}
 
   openSnackbar(message: string, action?: string, config?: MatSnackBarConfig) {
     if (!config || !config.duration) {
@@ -29,10 +29,10 @@ export class HelpersService {
       if (reqErr instanceof HttpErrorResponse && reqErr.status === 400) {
         validationError = reqErr.error;
       } else {
-        this.snackbar.open('Server error', 'OK', {duration: 3000})
+        this.snackbar.open('Server error', 'OK', {duration: 3000});
       }
 
       return of(action({error: validationError}));
-    })
+    });
   }
 }

@@ -16,14 +16,14 @@ const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
     keys: [{users: ['user']}],
     rehydrate: true
   })(reducer);
-}
+};
 
-const reducers ={
+const reducers = {
   artists: artistsReducer,
   albums: albumsReducer,
   users: usersReducer,
   tracks: tracksReducer,
-}
+};
 
 const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
@@ -32,7 +32,7 @@ const effects = [
   ArtistsEffects,
   AlbumsEffects,
   TracksEffects,
-]
+];
 
 @NgModule({
   imports: [

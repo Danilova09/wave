@@ -10,8 +10,6 @@ export class ImagePipe implements PipeTransform {
     if (value) {
       return env.apiUrl + '/uploads/' + value;
     }
-
     return '/assets/images/no_image_available.jpg';
   }
-
 }

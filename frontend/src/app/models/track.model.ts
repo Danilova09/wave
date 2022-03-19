@@ -1,6 +1,5 @@
 import { Album } from './album.model';
 import { Artist } from './artist.model';
-import { User } from './user.model';
 
 export interface Track {
   _id: string,
@@ -16,8 +15,8 @@ export interface TracksData {
 }
 
 export interface ApiHistoryData {
-  token: string,
-  track: string,
+  token: undefined | string,
+  track: undefined | string,
 }
 
 export interface TrackHistory {

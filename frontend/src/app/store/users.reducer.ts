@@ -3,7 +3,8 @@ import { createReducer, on } from '@ngrx/store';
 import {
   loginUserFailure,
   loginUserRequest,
-  loginUserSuccess, logoutUser,
+  loginUserSuccess,
+  logoutUser,
   registerUserFailure,
   registerUserRequest,
   registerUserSuccess

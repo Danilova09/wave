@@ -1,0 +1,9 @@
+.tracks-block {
+  display: block;
+  margin: 50px auto;
+  max-width: 700px;
+}
+
+.list-item {
+  border: 1px solid #c1c1c1;
+}

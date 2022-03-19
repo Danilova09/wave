@@ -7,9 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ArtistsService {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getArtists() {
     return this.http.get<Artist[]>(environment.apiUrl + '/artists');

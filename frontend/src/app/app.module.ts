@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 import { TracksComponent } from './pages/tracks/tracks.component';
 import { ImagePipe } from './pipes/image.pipe';
+import { TrackHistoryComponent } from './pages/track-history/track-history.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ImagePipe } from './pipes/image.pipe';
     CenteredCardComponent,
     TracksComponent,
     ImagePipe,
+    TrackHistoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<app-centered-card *ngIf="!(user | async)">
+  <div class="sign-in-block">
+    <a routerLink="/register">Don't have account? Let's register</a>
+  </div>
+</app-centered-card>
+<div class="tracks-block" *ngIf="user | async">
+  <mat-list role="list" class="tracks-list">
+    <mat-list-item class="list-item" role="listitem" *ngFor="let trackData of (trackHistory | async)">
+      <mat-icon style="width: 10%; cursor: pointer">play_circle_outline</mat-icon>
+      <span style="width: 30%; cursor: pointer">{{ trackData.track.title }}</span>
+      <span style="width: 30%">{{  trackData.track.duration }}</span>
+      <span style="width: 30%">{{  trackData.datetime.slice(0, 9) }}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+

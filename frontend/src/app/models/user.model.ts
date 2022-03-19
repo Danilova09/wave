@@ -20,7 +20,7 @@ export interface LoginUserData {
 }
 
 export interface LoginError {
-  error: string
+  error: string;
 }
 
 export interface FieldError {

@@ -10,7 +10,7 @@ const initialState: AlbumsState = {
 
 export const albumsReducer = createReducer(
   initialState,
-  on(fetchAlbumsRequest, (state, {artistId}) => ({...state, fetchLoading: true})),
+  on(fetchAlbumsRequest, (state) => ({...state, fetchLoading: true})),
   on(fetchAlbumsSuccess, (state, {albums}) => ({...state, fetchLoading: false, albums})),
   on(fetchAlbumsFailure, (state, {error}) => ({...state, fetchLoading: false, fetchError: error}))
 );
