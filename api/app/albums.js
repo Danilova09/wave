@@ -5,7 +5,6 @@ const multer = require('multer');
 const config = require('../config');
 const Album = require("../models/Album");
 const auth = require("../middleware/auth");
-const permit = require("../middleware/permit");
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -32,8 +31,9 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/', auth, permit('admin'),upload.single('image'), async (req, res, next) => {
+router.post('/', auth, upload.single('image'), async (req, res, next) => {
     try {
+        console.log(req.user);
         if (!req.body.title || !req.body.artist || !req.file || !req.body.releaseDate) {
             return res.status(400).send({error: 'Fill in required fields'});
         }
@@ -42,6 +42,7 @@ router.post('/', auth, permit('admin'),upload.single('image'), async (req, res, 
             title: req.body.title,
             releaseDate: req.body.releaseDate,
             image: req.file.filename,
+            isPublished: (req.user.role === 'admin'),
         }
         const album = new Album(albumData);
         await album.save();

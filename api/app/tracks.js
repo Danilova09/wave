@@ -3,7 +3,6 @@ const Track = require("../models/Track");
 const mongoose = require("mongoose");
 const Album = require("../models/Album");
 const auth = require("../middleware/auth");
-const permit = require("../middleware/permit");
 const router = express.Router();
 
 
@@ -20,12 +19,13 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/',  auth, permit('admin'),async (req, res, next) => {
+router.post('/',  auth, async (req, res, next) => {
     try {
         const trackData = {
             title: req.body.title,
             album: req.body.album,
             duration: req.body.duration,
+            isPublished: (req.user.role === 'admin'),
         }
         const track = new Track(trackData);
         await track.save();

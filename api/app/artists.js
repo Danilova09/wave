@@ -41,16 +41,16 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.post('/', auth, permit('admin'), upload.single('image') ,async (req, res, next) => {
+router.post('/', auth, upload.single('image') ,async (req, res, next) => {
     try {
         if (!req.body.name || !req.file || !req.body.info) {
             return res.status(400).send({error: 'Fill in required fields'});
         }
         const artistData = {
-            _id: req.body.id,
             name: req.body.name,
             image: req.file.filename,
             info: req.body.info,
+            isPublished: (req.user.role === 'admin'),
         }
 
         const artist = new Artist(artistData);

@@ -46,7 +46,7 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
         const user = new User(userData);
         user.generateToken();
         await user.save();
-        res.send({user});
+        res.send(user);
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
             res.status(400).send(error);
