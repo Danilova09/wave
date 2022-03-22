@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiHistoryData, TrackHistory, TracksData } from '../models/track.model';
 import { environment as env } from '../../environments/environment';
-import { NEVER } from 'rxjs';
 
 
 @Injectable({
@@ -16,18 +15,10 @@ export class TracksService {
   }
 
   postTrackHistory(apiHistoryData: ApiHistoryData) {
-    if (!apiHistoryData.token) {
-      return NEVER;
-    }
-    let headers = new HttpHeaders({'Authorization': apiHistoryData.token});
-    return this.http.post<ApiHistoryData>(env.apiUrl + '/track_history', apiHistoryData, {headers});
+    return this.http.post<ApiHistoryData>(env.apiUrl + '/track_history', apiHistoryData);
   }
 
   getTrackHistory(usersToken: undefined | string) {
-    if (!usersToken) {
-      return NEVER;
-    }
-    let headers = new HttpHeaders({'Authorization': usersToken});
-    return this.http.get<TrackHistory[]>(env.apiUrl + '/track_history', {headers});
+    return this.http.get<TrackHistory[]>(env.apiUrl + '/track_history');
   }
 }

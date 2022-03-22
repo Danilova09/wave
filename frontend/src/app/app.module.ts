@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ArtistsComponent } from './pages/artists/artists.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { FlexModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -30,6 +30,10 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
 import { TracksComponent } from './pages/tracks/tracks.component';
 import { ImagePipe } from './pipes/image.pipe';
 import { TrackHistoryComponent } from './pages/track-history/track-history.component';
+import { ArtistsFormComponent } from './pages/artists-form/artists-form.component';
+import { AlbumsFormComponent } from './pages/albums-form/albums-form.component';
+import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,9 @@ import { TrackHistoryComponent } from './pages/track-history/track-history.compo
     TracksComponent,
     ImagePipe,
     TrackHistoryComponent,
+    ArtistsFormComponent,
+    AlbumsFormComponent,
+    TracksFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,10 @@ import { TrackHistoryComponent } from './pages/track-history/track-history.compo
     AppStoreModule,
     MatMenuModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

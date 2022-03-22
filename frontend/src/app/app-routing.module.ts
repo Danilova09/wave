@@ -6,12 +6,18 @@ import { RegisterFormComponent } from './pages/register-form/register-form.compo
 import { LoginComponent } from './pages/login/login.component';
 import { TracksComponent } from './pages/tracks/tracks.component';
 import { TrackHistoryComponent } from './pages/track-history/track-history.component';
+import { ArtistsFormComponent } from './pages/artists-form/artists-form.component';
+import { AlbumsFormComponent } from './pages/albums-form/albums-form.component';
+import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
 
 const routes: Routes = [
   {path: '', component: ArtistsComponent},
   {path: 'albums', component: AlbumsComponent},
   {path: 'register', component: RegisterFormComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'artist-new', component: ArtistsFormComponent},
+  {path: 'album-new', component: AlbumsFormComponent},
+  {path: 'track-new', component: TracksFormComponent},
   {path: 'track-history', component: TrackHistoryComponent},
   {path: 'tracks/byAlbum/:albumId', component: TracksComponent},
 ];

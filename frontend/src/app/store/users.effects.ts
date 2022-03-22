@@ -25,7 +25,8 @@ export class UsersEffects {
     private router: Router,
     private helpers: HelpersService,
     private store: Store<AppState>
-  ) {}
+  ) {
+  }
 
   registerUser = createEffect(() => this.actions.pipe(
     ofType(registerUserRequest),
@@ -37,7 +38,7 @@ export class UsersEffects {
       }),
       this.helpers.catchServerError(registerUserFailure)
     ))
-  ))
+  ));
 
   loginUser = createEffect(() => this.actions.pipe(
     ofType(loginUserRequest),
@@ -49,19 +50,15 @@ export class UsersEffects {
       }),
       this.helpers.catchServerError(loginUserFailure)
     ))
-  ))
+  ));
 
   logoutUser = createEffect(() => this.actions.pipe(
     ofType(logoutUserRequest),
-    withLatestFrom(this.store.select(state => state.users.user)),
-    mergeMap(([_, user]) => {
-      if (user) {
-        return this.usersService.logout(user.token).pipe(
-          map(() => logoutUser()),
-          tap(() => this.helpers.openSnackbar('Logout successful'))
-        );
-      }
-      return NEVER;
+    mergeMap(() => {
+      return this.usersService.logout().pipe(
+        map(() => logoutUser()),
+        tap(() => this.helpers.openSnackbar('Logout successful'))
+      );
     }))
-  )
+  );
 }
