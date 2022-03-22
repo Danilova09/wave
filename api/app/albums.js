@@ -33,7 +33,6 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', auth, upload.single('image'), async (req, res, next) => {
     try {
-        console.log(req.user);
         if (!req.body.title || !req.body.artist || !req.file || !req.body.releaseDate) {
             return res.status(400).send({error: 'Fill in required fields'});
         }

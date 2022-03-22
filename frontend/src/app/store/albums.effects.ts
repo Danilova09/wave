@@ -25,7 +25,7 @@ export class AlbumsEffects {
 
   fetchAlbums = createEffect(() => this.actions.pipe(
     ofType(fetchAlbumsRequest),
-    mergeMap(({artistId}) => this.albumsService.getAlbums(artistId).pipe(
+    mergeMap(({artistId}) => this.albumsService.getAlbumsByArtist(artistId).pipe(
       map(albums => fetchAlbumsSuccess({albums})),
       catchError((error) => of(fetchArtistsFailure({error})))
     ))

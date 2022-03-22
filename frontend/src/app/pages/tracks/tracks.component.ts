@@ -4,7 +4,7 @@ import { AppState } from '../../store/types';
 import { Store } from '@ngrx/store';
 import { fetchTracksByAlbumRequest, postUsersTrackHistory } from '../../store/tracks.actions';
 import { Observable } from 'rxjs';
-import { TracksData } from '../../models/track.model';
+import { TrackHistoryData } from '../../models/track.model';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./tracks.component.css']
 })
 export class TracksComponent implements OnInit {
-  trackData!: Observable<null | TracksData>;
+  trackData!: Observable<null | TrackHistoryData>;
   usersToken!: undefined | string;
   env = environment;
 

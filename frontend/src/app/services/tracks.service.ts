@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiHistoryData, TrackHistory, TracksData } from '../models/track.model';
+import { ApiHistoryData, Track, TrackData, TrackHistory, TrackHistoryData } from '../models/track.model';
 import { environment as env } from '../../environments/environment';
 
 
@@ -11,7 +11,11 @@ export class TracksService {
   constructor(private http: HttpClient) {}
 
   getTracksByAlbum(albumId: string) {
-    return this.http.get<TracksData>(`${env.apiUrl}/tracks/byAlbum/${albumId}`);
+    return this.http.get<TrackHistoryData>(`${env.apiUrl}/tracks/byAlbum/${albumId}`);
+  }
+
+  postTrack(trackData: TrackData) {
+    return this.http.post<Track>(env.apiUrl + '/tracks', trackData);
   }
 
   postTrackHistory(apiHistoryData: ApiHistoryData) {

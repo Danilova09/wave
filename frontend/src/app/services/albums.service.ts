@@ -11,7 +11,7 @@ import { tap } from 'rxjs';
 export class AlbumsService {
   constructor(private http: HttpClient,) {}
 
-  getAlbums(artistId: string) {
+  getAlbumsByArtist(artistId: string) {
     let params = new HttpParams();
     params = params.append('artist', artistId);
     return this.http.get<Album[]>(env.apiUrl + '/albums', {params: params});

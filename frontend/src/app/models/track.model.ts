@@ -8,7 +8,13 @@ export interface Track {
   duration: string,
 }
 
-export interface TracksData {
+export interface TrackData {
+  title: string,
+  album: string,
+  duration: string,
+}
+
+export interface TrackHistoryData {
   artist: Artist,
   album: Album,
   tracks: Track[],

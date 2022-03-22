@@ -29,7 +29,7 @@ router.post('/',  auth, async (req, res, next) => {
         }
         const track = new Track(trackData);
         await track.save();
-        res.send({track});
+        res.send(track);
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
             return res.status(400).send(error);

@@ -28,7 +28,6 @@
       <mat-label>Artists</mat-label>
       <mat-select name="artist" #artist="ngModel" ngModel required>
         <mat-option [value]="artist._id" *ngFor="let artist of (artists | async)">{{ artist.name }}</mat-option>
-<!--        <mat-option value="two">Second option</mat-option>-->
       </mat-select>
       <mat-error *ngIf="artist.touched && artist.hasError('required')">
         Choose artist!

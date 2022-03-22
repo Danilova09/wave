@@ -1,9 +1,13 @@
 import { createAction, props } from '@ngrx/store';
-import { ApiHistoryData, TrackHistory, TracksData } from '../models/track.model';
+import { ApiHistoryData, TrackHistory, TrackHistoryData, TrackData, Track } from '../models/track.model';
 
 export const fetchTracksByAlbumRequest = createAction('[Tracks] Fetch Request', props<{ albumId: string }>());
-export const fetchTracksByAlbumSuccess = createAction('[Tracks] Fetch Success', props<{ trackData: TracksData }>());
+export const fetchTracksByAlbumSuccess = createAction('[Tracks] Fetch Success', props<{ trackData: TrackHistoryData }>());
 export const fetchTracksByAlbumFailure = createAction('[Tracks] Fetch Failure', props<{ error: string }>());
+
+export const postTrackRequest = createAction('[Tracks] Post Request', props<{ trackData: TrackData }>());
+export const postTrackSuccess = createAction('[Tracks] Post Success', props<{ track: Track }>());
+export const postTrackFailure = createAction('[Tracks] Post Failure', props<{ error: string }>());
 
 export const postUsersTrackHistory = createAction('[Tracks] Post TrackHistory', props<{ apiHistoryData: ApiHistoryData }>());
 export const postUsersTrackHistorySuccess = createAction('[Tracks] Post TrackHistory Success');

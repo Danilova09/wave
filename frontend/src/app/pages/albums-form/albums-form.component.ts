@@ -21,7 +21,6 @@ export class AlbumsFormComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private albumsService: AlbumsService,
   ) {
     this.artists = store.select(state => state.artists.artists);
   }
