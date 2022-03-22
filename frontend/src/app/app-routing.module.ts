@@ -9,15 +9,31 @@ import { TrackHistoryComponent } from './pages/track-history/track-history.compo
 import { ArtistsFormComponent } from './pages/artists-form/artists-form.component';
 import { AlbumsFormComponent } from './pages/albums-form/albums-form.component';
 import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
+import { RoleGuardService } from './services/role-guard.service';
 
 const routes: Routes = [
   {path: '', component: ArtistsComponent},
   {path: 'albums', component: AlbumsComponent},
   {path: 'register', component: RegisterFormComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'artist-new', component: ArtistsFormComponent},
-  {path: 'album-new', component: AlbumsFormComponent},
-  {path: 'track-new', component: TracksFormComponent},
+  {
+    path: 'artist-new',
+    component: ArtistsFormComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: ['admin', 'user']}
+  },
+  {
+    path: 'album-new',
+    component: AlbumsFormComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: ['admin', 'user']}
+  },
+  {
+    path: 'track-new',
+    component: TracksFormComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: ['admin', 'user']}
+  },
   {path: 'track-history', component: TrackHistoryComponent},
   {path: 'tracks/byAlbum/:albumId', component: TracksComponent},
 ];
@@ -26,4 +42,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

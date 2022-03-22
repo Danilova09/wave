@@ -11,6 +11,7 @@ export interface User {
   displayName: string,
   email: string,
   avatar: string,
+  role: string,
   token: string,
 }
 

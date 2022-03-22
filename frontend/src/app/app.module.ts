@@ -34,6 +34,7 @@ import { ArtistsFormComponent } from './pages/artists-form/artists-form.componen
 import { AlbumsFormComponent } from './pages/albums-form/albums-form.component';
 import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { HasRolesDirective } from './directives/has-roles.directive';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AuthInterceptor } from './auth.interceptor';
     ArtistsFormComponent,
     AlbumsFormComponent,
     TracksFormComponent,
+    HasRolesDirective,
   ],
   imports: [
     BrowserModule,
