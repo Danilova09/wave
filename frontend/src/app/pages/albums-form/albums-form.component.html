@@ -1,1 +1,50 @@
-<p>albums-form works!</p>
+<app-centered-card title="Add Album">
+  <form
+    #f="ngForm"
+    fxLayout="column"
+    autocomplete="off"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input
+        type="text" name="title"
+        required matInput ngModel #title="ngModel"
+      />
+      <mat-error *ngIf="title.touched && title.hasError('required')">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Release Date</mat-label>
+      <input
+        type="date" name="releaseDate" autocomplete="current-releaseDate"
+        required matInput ngModel #releaseDate="ngModel">
+      <mat-error *ngIf="releaseDate.touched && releaseDate.hasError('required')">
+        Release date is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Artists</mat-label>
+      <mat-select name="artist" #artist="ngModel" ngModel required>
+        <mat-option [value]="artist._id" *ngFor="let artist of (artists | async)">{{ artist.name }}</mat-option>
+<!--        <mat-option value="two">Second option</mat-option>-->
+      </mat-select>
+      <mat-error *ngIf="artist.touched && artist.hasError('required')">
+        Choose artist!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Image</mat-label>
+      <app-file-input name="image" ngModel #image=ngModel required></app-file-input>
+      <mat-error *ngIf="image.touched && image.hasError('required')">
+        Image is required!
+      </mat-error>
+    </mat-form-field>
+    <p *ngIf="imageError" class="error">Image is required</p>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary">ADD ALBUM</button>
+  </form>
+</app-centered-card>

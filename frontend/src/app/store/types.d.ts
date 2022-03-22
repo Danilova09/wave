@@ -7,12 +7,16 @@ export type ArtistsState = {
   artists: Artist[],
   fetchLoading: boolean,
   fetchError: null | string,
+  postLoading: Boolean,
+  postError: null | string,
 }
 
 export type AlbumsState = {
   albums: Album[],
   fetchLoading: boolean,
   fetchError: null | string,
+  postLoading: boolean,
+  postError: null | string,
 }
 
 export type UsersState = {

@@ -1,1 +1,41 @@
-<p>artists-form works!</p>
+<app-centered-card title="Add Artist">
+  <form
+    #f="ngForm"
+    fxLayout="column"
+    autocomplete="off"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        type="text" name="name" autocomplete="username"
+        required matInput ngModel #name="ngModel"
+      />
+      <mat-error *ngIf="name.touched && name.hasError('required')">
+        Name is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Information</mat-label>
+      <textarea
+        type="info" name="info" autocomplete="current-info"
+        required matInput ngModel #info="ngModel">
+      </textarea>
+      <mat-error *ngIf="info.touched && info.hasError('required')">
+        Information is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Image</mat-label>
+      <app-file-input name="image" ngModel #image=ngModel required></app-file-input>
+      <mat-error *ngIf="image.touched && image.hasError('required')">
+        Image is required!
+      </mat-error>
+    </mat-form-field>
+    <p *ngIf="imageError" class="error">Image is required</p>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary">ADD ARTIST</button>
+  </form>
+</app-centered-card>

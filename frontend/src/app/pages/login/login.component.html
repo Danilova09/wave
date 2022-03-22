@@ -1,10 +1,11 @@
-<app-centered-card title="Sign in">
+<app-centered-card>
   <form
     #f="ngForm"
     fxLayout="column"
     autocomplete="off"
     (ngSubmit)="onSubmit()"
   >
+    <h3>Sign In</h3>
     <div *ngIf="error | async" class="error">
       {{ (error | async)?.error }}
     </div>

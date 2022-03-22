@@ -35,6 +35,7 @@ import { AlbumsFormComponent } from './pages/albums-form/albums-form.component';
 import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { HasRolesDirective } from './directives/has-roles.directive';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -54,28 +55,29 @@ import { HasRolesDirective } from './directives/has-roles.directive';
     TracksFormComponent,
     HasRolesDirective,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    HttpClientModule,
-    FormsModule,
-    ValidateEqualModule,
-    MatSnackBarModule,
-    MatCardModule,
-    FlexModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    AppRoutingModule,
-    AppStoreModule,
-    MatMenuModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        HttpClientModule,
+        FormsModule,
+        ValidateEqualModule,
+        MatSnackBarModule,
+        MatCardModule,
+        FlexModule,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        AppRoutingModule,
+        AppStoreModule,
+        MatMenuModule,
+        MatSelectModule,
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

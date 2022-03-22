@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Album } from '../models/album.model';
-import { environment } from '../../environments/environment';
+import { Album, AlbumData } from '../models/album.model';
+import { environment as env } from '../../environments/environment';
+import { tap } from 'rxjs';
 
 
 @Injectable({
@@ -13,6 +14,14 @@ export class AlbumsService {
   getAlbums(artistId: string) {
     let params = new HttpParams();
     params = params.append('artist', artistId);
-    return this.http.get<Album[]>(environment.apiUrl + '/albums', {params: params});
+    return this.http.get<Album[]>(env.apiUrl + '/albums', {params: params});
+  }
+
+  postAlbum(albumData: AlbumData) {
+    const formData = new FormData();
+    Object.keys(albumData).forEach(key => {
+      if (albumData[key] !== null) formData.append(key, albumData[key]);
+    });
+    return this.http.post<Album>(env.apiUrl + '/albums', formData)
   }
 }

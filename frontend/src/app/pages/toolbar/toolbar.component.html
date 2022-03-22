@@ -5,10 +5,12 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/" href="#">Artists</a>
-      <a mat-list-item routerLink="/artist-new" href="#">Add Artist</a>
-      <a mat-list-item routerLink="/album-new" href="#">Add Album</a>
-      <a mat-list-item routerLink="/track-new" href="#">Add Track</a>
+      <a mat-list-item routerLink="/">Artists</a>
+      <p *appHasRoles="['user', 'admin']">
+        <a mat-list-item routerLink="artist-new/">Add Artist</a>
+        <a mat-list-item routerLink="album-new/">Add Album</a>
+        <a mat-list-item routerLink="track-new/">Add Track</a>
+      </p>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -34,7 +36,7 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>{{ (user | async)?.email }}</button>
-          <button mat-menu-item routerLink="track-history/">Track History</button>
+          <button mat-menu-item routerLink="/track-history">Track History</button>
           <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
       </nav>

@@ -46,7 +46,7 @@ router.post('/', auth, upload.single('image'), async (req, res, next) => {
         }
         const album = new Album(albumData);
         await album.save();
-        return res.send({album});
+        return res.send(album);
     } catch (e) {
         next(e);
     }
