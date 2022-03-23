@@ -5,6 +5,7 @@ const multer = require('multer');
 const config = require('../config');
 const Album = require("../models/Album");
 const auth = require("../middleware/auth");
+const permit = require("../middleware/permit");
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -22,7 +23,7 @@ router.get('/', async (req, res, next) => {
     try {
         if (req.query.artist) {
             const artistsAlbums = await Album.find({artist: req.query.artist});
-            return res.send(artistsAlbums) ;
+            return res.send(artistsAlbums);
         }
         const albums = await Album.find().populate('artist', 'name info image');
         res.send(albums);
@@ -62,5 +63,17 @@ router.get('/:id', async (req, res, next) => {
         next(e);
     }
 });
+
+router.post('/:id/publish', auth, permit('admin'), async (req, res, next) => {
+    try {
+        const filter = {_id: req.params.id};
+        const update = {isPublished: true};
+        const updatedAlbum = await Album.findOneAndUpdate(filter, update);
+        updatedAlbum.save();
+        res.send(updatedAlbum);
+    } catch (e) {
+        next(e);
+    }
+})
 
 module.exports = router;

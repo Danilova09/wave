@@ -6,6 +6,15 @@ export interface Track {
   title: string,
   album: Album,
   duration: string,
+  isPublished: boolean,
+}
+
+export interface ApiTrack {
+  _id: string,
+  title: string,
+  album: string,
+  duration: string,
+  isPublished: boolean,
 }
 
 export interface TrackData {

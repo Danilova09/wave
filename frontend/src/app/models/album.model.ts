@@ -6,6 +6,16 @@ export interface Album {
   title: string,
   releaseDate: string,
   image: string,
+  isPublished: boolean,
+}
+
+export interface ApiAlbum {
+  _id: string,
+  artist: string,
+  title: string,
+  releaseDate: string,
+  image: string,
+  isPublished: boolean,
 }
 
 export interface AlbumData {

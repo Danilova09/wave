@@ -4,12 +4,18 @@ import {
   fetchTracksByAlbumFailure,
   fetchTracksByAlbumRequest,
   fetchTracksByAlbumSuccess,
-  postUsersTrackHistory,
-  postUsersTrackHistorySuccess,
-  postUsersTrackHistoryFailure,
   getUsersTrackHistory,
+  getUsersTrackHistoryFailure,
   getUsersTrackHistorySuccess,
-  getUsersTrackHistoryFailure, postTrackRequest, postTrackFailure, postTrackSuccess,
+  postTrackFailure,
+  postTrackRequest,
+  postTrackSuccess,
+  postUsersTrackHistory,
+  postUsersTrackHistoryFailure,
+  postUsersTrackHistorySuccess,
+  publishTrackFailure,
+  publishTrackRequest,
+  publishTrackSuccess,
 } from './tracks.actions';
 
 const initialState: TracksState = {
@@ -23,6 +29,8 @@ const initialState: TracksState = {
   usersTrackHistory: [],
   trackHistoryLoading: false,
   trackHistoryError: null,
+  publishLoading: false,
+  publishError: null,
 }
 
 export const tracksReducer = createReducer(
@@ -39,4 +47,7 @@ export const tracksReducer = createReducer(
   on(postTrackRequest, (state) => ({...state, postTrackLoading: true})),
   on(postTrackSuccess, (state) => ({...state, postTrackLoading: false})),
   on(postTrackFailure, (state, {error}) => ({...state, postTrackLoading: false, postTrackError: error})),
+  on(publishTrackRequest, (state) => ({...state, publishLoading: true})),
+  on(publishTrackSuccess, (state) => ({...state, publishLoading: false})),
+  on(publishTrackFailure, (state, {error}) => ({...state, publishLoading: false, publishError: error})),
 )

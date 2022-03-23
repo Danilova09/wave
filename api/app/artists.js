@@ -61,4 +61,16 @@ router.post('/', auth, upload.single('image') ,async (req, res, next) => {
     }
 });
 
+router.post('/:id/publish', auth, permit('admin'), async (req, res, next) => {
+    try {
+        const filter = {_id: req.params.id};
+        const update = {isPublished: true};
+        const updatedArtist = await Artist.findOneAndUpdate(filter, update);
+        updatedArtist.save()
+        res.send(updatedArtist);
+    } catch(e) {
+        next(e);
+    }
+})
+
 module.exports = router;

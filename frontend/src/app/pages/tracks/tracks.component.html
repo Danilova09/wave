@@ -1,13 +1,35 @@
-<div class="tracks-block">
+<div class="tracks-block" *appHasRoles="['admin'] else UserAndAnonym">
   <div class="artist-block">
     <h2>{{(trackData | async)?.album?.title }}  {{(trackData | async)?.album?.releaseDate }}</h2>
-    <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image" [alt]="(trackData | async)?.album?.title">
+    <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
+         [alt]="(trackData | async)?.album?.title">
   </div>
   <mat-list role="list" class="tracks-list">
-    <mat-list-item class="list-item"  role="listitem"  *ngFor="let track of (trackData | async)?.tracks">
-        <mat-icon style="width: 5%; cursor: pointer" (click)="addToTrackHistory(track._id)">play_circle_outline</mat-icon>
-        <span style="width: 35%; cursor: pointer" (click)="addToTrackHistory(track._id)">{{ track?.title }}</span>
-        <span style="width: 60%">{{ track?.duration }}</span>
+    <mat-list-item class="list-item" role="listitem" *ngFor="let track of (trackData | async)?.tracks">
+      <mat-icon style="width: 10%; cursor: pointer" (click)="addToTrackHistory(track._id)">play_circle_outline
+      </mat-icon>
+      <span style="width: 30%; cursor: pointer" (click)="addToTrackHistory(track._id)">{{ track?.title }}</span>
+      <span style="width: 30%">{{ track?.duration }}</span>
+      <span *ngIf="!track.isPublished" style="width: 20%; color: red;">unpublished</span>
+      <button style="width: 10%;" mat-raised-button color="primary" *ngIf="!track.isPublished" (click)="publish(track._id)">PUBLISH</button>
     </mat-list-item>
   </mat-list>
 </div>
+
+<ng-template #UserAndAnonym>
+  <div class="tracks-block">
+    <div class="artist-block">
+      <h2>{{(trackData | async)?.album?.title }}  {{(trackData | async)?.album?.releaseDate }}</h2>
+      <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
+           [alt]="(trackData | async)?.album?.title">
+    </div>
+    <mat-list role="list" class="tracks-list">
+      <mat-list-item class="list-item" role="listitem" *ngFor="let track of (trackData | async)?.tracks | tracks">
+        <mat-icon style="width: 5%; cursor: pointer" (click)="addToTrackHistory(track._id)">play_circle_outline
+        </mat-icon>
+        <span style="width: 35%; cursor: pointer" (click)="addToTrackHistory(track._id)">{{ track?.title }}</span>
+        <span style="width: 60%">{{ track?.duration }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</ng-template>

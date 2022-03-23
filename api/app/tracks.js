@@ -3,6 +3,7 @@ const Track = require("../models/Track");
 const mongoose = require("mongoose");
 const Album = require("../models/Album");
 const auth = require("../middleware/auth");
+const permit = require("../middleware/permit");
 const router = express.Router();
 
 
@@ -60,6 +61,18 @@ router.get('/byAlbum/:albumID', async (req, res, next) => {
             tracks,
         }
         return res.send(tracksByAlbum);
+    } catch (e) {
+        next(e);
+    }
+})
+
+router.post('/:id/publish', auth, permit('admin'), async (req, res, next) => {
+    try {
+        const filter = {_id: req.params.id};
+        const update = {isPublished: true};
+        const updatedTrack= await Track.findOneAndUpdate(filter, update);
+        updatedTrack.save();
+        res.send(updatedTrack);
     } catch (e) {
         next(e);
     }

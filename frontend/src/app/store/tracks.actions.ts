@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ApiHistoryData, TrackHistory, TrackHistoryData, TrackData, Track } from '../models/track.model';
+import { ApiHistoryData, ApiTrack, Track, TrackData, TrackHistory, TrackHistoryData } from '../models/track.model';
 
 export const fetchTracksByAlbumRequest = createAction('[Tracks] Fetch Request', props<{ albumId: string }>());
 export const fetchTracksByAlbumSuccess = createAction('[Tracks] Fetch Success', props<{ trackData: TrackHistoryData }>());
@@ -17,3 +17,6 @@ export const getUsersTrackHistory = createAction('[Track-History] Fetch Request'
 export const getUsersTrackHistorySuccess = createAction('[Track-History] Fetch Success', props<{ usersTrackHistory: TrackHistory[] }>());
 export const getUsersTrackHistoryFailure = createAction('[Track-History] Fetch Failure', props<{ error: string }>());
 
+export const publishTrackRequest = createAction('[Tracks] Put Request', props<{ trackId: string }>());
+export const publishTrackSuccess = createAction('[Tracks] Put Success', props<{ track: ApiTrack }>());
+export const publishTrackFailure = createAction('[Tracks] Put Failure', props<{ error: string }>());

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Album } from '../../models/album.model';
-import { fetchAlbumsRequest } from '../../store/albums.actions';
+import { fetchAlbumsRequest, publishAlbumRequest } from '../../store/albums.actions';
 import { AppState } from '../../store/types';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-albums',
@@ -20,7 +21,8 @@ export class AlbumsComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private route: ActivatedRoute)
+    private route: ActivatedRoute,
+    )
   {
     this.albums = store.select(state => state.albums.albums);
     this.loading = store.select(state => state.albums.fetchLoading);
@@ -30,5 +32,9 @@ export class AlbumsComponent implements OnInit {
   ngOnInit(): void {
     let artistId = this.route.snapshot.queryParams['artist'];
     this.store.dispatch(fetchAlbumsRequest({artistId}));
+  }
+
+  publish(albumId: string) {
+    this.store.dispatch(publishAlbumRequest({albumId}));
   }
 }

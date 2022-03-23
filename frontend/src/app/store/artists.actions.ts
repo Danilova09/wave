@@ -10,3 +10,7 @@ export const postArtistRequest = createAction('[Artists] Post Request', props<{ 
 export const postArtistSuccess = createAction('[Artists] Post Success');
 export const postArtistFailure = createAction('[Artists] Post Failure', props<{ error: string }>());
 
+export const publishArtistRequest = createAction('[Artists] Put Request', props<{ artistId: string}>());
+export const publishArtistSuccess = createAction('[Artists] Put Success');
+export const publishArtistFailure = createAction('[Artists] Put Failure', props<{ error: string}>());
+

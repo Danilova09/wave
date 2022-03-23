@@ -13,11 +13,16 @@ import {
   postTrackSuccess,
   postUsersTrackHistory,
   postUsersTrackHistoryFailure,
-  postUsersTrackHistorySuccess
+  postUsersTrackHistorySuccess,
+  publishTrackRequest,
+  publishTrackSuccess
 } from './tracks.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { HelpersService } from '../services/helpers.service';
+import { publishAlbumFailure } from './albums.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from './types';
 
 @Injectable()
 export class TracksEffects {
@@ -26,6 +31,7 @@ export class TracksEffects {
     private tracksService: TracksService,
     private helpers: HelpersService,
     private router: Router,
+    private store: Store<AppState>,
   ) {
   }
 
@@ -66,4 +72,17 @@ export class TracksEffects {
       catchError((e) => of(getUsersTrackHistoryFailure({error: e})))
     ))
   ));
+
+  publishTrack= createEffect(() => this.actions.pipe(
+    ofType(publishTrackRequest),
+    mergeMap(({trackId}) => this.tracksService.publishTrack(trackId).pipe(
+      map((track) => publishTrackSuccess({track})),
+      tap((track) => {
+        const albumId = track.track.album;
+        this.store.dispatch(fetchTracksByAlbumRequest({albumId}));
+        this.helpers.openSnackbar('Track is published!');
+      }),
+      catchError((e) => of(publishAlbumFailure({error: e})))
+    ))
+  ))
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../../store/types';
 import { Store } from '@ngrx/store';
-import { fetchTracksByAlbumRequest, postUsersTrackHistory } from '../../store/tracks.actions';
+import { fetchTracksByAlbumRequest, postUsersTrackHistory, publishTrackRequest } from '../../store/tracks.actions';
 import { Observable } from 'rxjs';
 import { TrackHistoryData } from '../../models/track.model';
 import { environment } from '../../../environments/environment';
@@ -38,5 +38,9 @@ export class TracksComponent implements OnInit {
       track: trackId,
     }
     this.store.dispatch(postUsersTrackHistory({apiHistoryData}))
+  }
+
+  publish(trackId: string) {
+    this.store.dispatch(publishTrackRequest({trackId}));
   }
 }

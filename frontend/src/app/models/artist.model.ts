@@ -3,6 +3,7 @@ export interface Artist {
   name: string,
   info: string,
   image: string,
+  isPublished: boolean,
 }
 
 export interface ArtistData {

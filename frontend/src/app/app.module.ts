@@ -36,6 +36,9 @@ import { TracksFormComponent } from './pages/tracks-form/tracks-form.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { HasRolesDirective } from './directives/has-roles.directive';
 import { MatSelectModule } from '@angular/material/select';
+import { ArtistsPipe } from './pipes/artists.pipe';
+import { AlbumsPipe } from './pipes/albums.pipe';
+import { TracksPipe } from './pipes/tracks.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { MatSelectModule } from '@angular/material/select';
     AlbumsFormComponent,
     TracksFormComponent,
     HasRolesDirective,
+    ArtistsPipe,
+    AlbumsPipe,
+    TracksPipe,
   ],
     imports: [
         BrowserModule,

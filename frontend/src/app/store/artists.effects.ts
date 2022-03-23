@@ -4,13 +4,15 @@ import { ArtistsService } from '../services/artists.service';
 import {
   fetchArtistsFailure,
   fetchArtistsRequest,
-  fetchArtistsSuccess,
+  fetchArtistsSuccess, postArtistFailure,
   postArtistRequest,
-  postArtistSuccess
+  postArtistSuccess, publishArtistFailure, publishArtistRequest, publishArtistSuccess
 } from './artists.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { HelpersService } from '../services/helpers.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from './types';
 
 @Injectable()
 export class ArtistsEffects {
@@ -19,7 +21,9 @@ export class ArtistsEffects {
     private artistsService: ArtistsService,
     private helpers: HelpersService,
     private router: Router,
-  ) {}
+    private store: Store<AppState>,
+  ) {
+  }
 
   fetchArtists = createEffect(() => this.actions.pipe(
     ofType(fetchArtistsRequest),
@@ -35,8 +39,21 @@ export class ArtistsEffects {
       map(() => postArtistSuccess()),
       tap(() => {
         void this.router.navigate(['/']);
-        this.helpers.openSnackbar('Artist created!')
-      })
+        this.helpers.openSnackbar('Artist created!');
+      }),
+      catchError((e) => of(postArtistFailure({error: e})))
+    ))
+  ));
+
+  publishArtist = createEffect(() => this.actions.pipe(
+    ofType(publishArtistRequest),
+    mergeMap(({artistId}) => this.artistsService.publishArtist(artistId).pipe(
+      map(() => publishArtistSuccess()),
+      tap(() => {
+        this.store.dispatch(fetchArtistsRequest());
+        this.helpers.openSnackbar('Artist published!');
+      }),
+      catchError((e) => of(publishArtistFailure({error: e})))
     ))
   ))
 }

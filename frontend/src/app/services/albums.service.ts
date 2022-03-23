@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Album, AlbumData } from '../models/album.model';
+import { Album, AlbumData, ApiAlbum } from '../models/album.model';
 import { environment as env } from '../../environments/environment';
-import { tap } from 'rxjs';
 
 
 @Injectable({
@@ -23,5 +22,9 @@ export class AlbumsService {
       if (albumData[key] !== null) formData.append(key, albumData[key]);
     });
     return this.http.post<Album>(env.apiUrl + '/albums', formData)
+  }
+
+  publishAlbum(albumId: string) {
+    return this.http.post<ApiAlbum>(`${env.apiUrl}/albums/${albumId}/publish`, albumId);
   }
 }

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Artist, ArtistData } from '../models/artist.model';
 import { environment as env } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +20,9 @@ export class ArtistsService {
       if (artistData[key] !== null) formData.append(key, artistData[key]);
     });
     return this.http.post<Artist>(env.apiUrl + '/artists', formData);
+  }
+
+  publishArtist(artistId: string) {
+    return this.http.post(`${env.apiUrl}/artists/${artistId}/publish`, artistId);
   }
 }

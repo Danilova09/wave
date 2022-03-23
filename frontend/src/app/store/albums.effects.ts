@@ -6,18 +6,24 @@ import {
   fetchAlbumsSuccess,
   postAlbumFailure,
   postAlbumRequest,
-  postAlbumSuccess
+  postAlbumSuccess,
+  publishAlbumFailure,
+  publishAlbumRequest,
+  publishAlbumSuccess
 } from './albums.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { fetchArtistsFailure } from './artists.actions';
 import { HelpersService } from '../services/helpers.service';
 import { Router } from '@angular/router';
+import { AppState } from './types';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class AlbumsEffects {
   constructor(
     private actions: Actions,
     private albumsService: AlbumsService,
+    private store: Store<AppState>,
     private helpers: HelpersService,
     private router: Router,
   ) {
@@ -46,4 +52,17 @@ export class AlbumsEffects {
       catchError((error) => of(postAlbumFailure({error})))
     ))
   ));
+
+  publishAlbum = createEffect(() => this.actions.pipe(
+    ofType(publishAlbumRequest),
+    mergeMap(({albumId}) => this.albumsService.publishAlbum(albumId).pipe(
+      map((album) => publishAlbumSuccess({album})),
+      tap((album) => {
+        const artistId = album.album.artist;
+        this.store.dispatch(fetchAlbumsRequest({artistId}));
+        this.helpers.openSnackbar('Album is published!');
+      }),
+      catchError((e) => of(publishAlbumFailure({error: e})))
+    ))
+  ))
 }
