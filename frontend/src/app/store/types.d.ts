@@ -11,6 +11,8 @@ export type ArtistsState = {
   postError: null | string,
   publishLoading: boolean,
   publishError: null | string,
+  deleteLoading: boolean,
+  deleteError: null | string,
 }
 
 export type AlbumsState = {
@@ -21,6 +23,8 @@ export type AlbumsState = {
   postError: null | string,
   publishLoading: boolean,
   publishError: null | string,
+  deleteLoading: boolean,
+  deleteError: null | string,
 }
 
 export type UsersState = {
@@ -44,6 +48,8 @@ export type TracksState = {
   trackHistoryError: null | string,
   publishLoading: boolean,
   publishError: null | string,
+  deleteLoading: boolean,
+  deleteError: null | string,
 }
 
 export type AppState = {

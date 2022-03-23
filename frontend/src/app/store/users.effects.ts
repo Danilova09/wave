@@ -3,16 +3,16 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
 import {
-  registerUserFailure,
-  registerUserRequest,
-  registerUserSuccess,
   loginUserFailure,
   loginUserRequest,
   loginUserSuccess,
   logoutUser,
   logoutUserRequest,
+  registerUserFailure,
+  registerUserRequest,
+  registerUserSuccess,
 } from './users.actions';
-import { map, mergeMap, NEVER, tap, withLatestFrom } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs';
 import { HelpersService } from '../services/helpers.service';
 import { AppState } from './types';
 import { Store } from '@ngrx/store';

@@ -1,6 +1,9 @@
 import { TracksState } from './types';
 import { createReducer, on } from '@ngrx/store';
 import {
+  deleteTrackFailure,
+  deleteTrackRequest,
+  deleteTrackSuccess,
   fetchTracksByAlbumFailure,
   fetchTracksByAlbumRequest,
   fetchTracksByAlbumSuccess,
@@ -31,7 +34,9 @@ const initialState: TracksState = {
   trackHistoryError: null,
   publishLoading: false,
   publishError: null,
-}
+  deleteLoading: false,
+  deleteError: null,
+};
 
 export const tracksReducer = createReducer(
   initialState,
@@ -50,4 +55,7 @@ export const tracksReducer = createReducer(
   on(publishTrackRequest, (state) => ({...state, publishLoading: true})),
   on(publishTrackSuccess, (state) => ({...state, publishLoading: false})),
   on(publishTrackFailure, (state, {error}) => ({...state, publishLoading: false, publishError: error})),
-)
+  on(deleteTrackRequest, (state) => ({...state, deleteLoading: true})),
+  on(deleteTrackSuccess, (state) => ({...state, deleteLoading: false})),
+  on(deleteTrackFailure, (state, {error}) => ({...state, deleteLoading: false, deleteError: error})),
+);

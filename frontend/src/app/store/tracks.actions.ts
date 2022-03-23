@@ -20,3 +20,8 @@ export const getUsersTrackHistoryFailure = createAction('[Track-History] Fetch F
 export const publishTrackRequest = createAction('[Tracks] Put Request', props<{ trackId: string }>());
 export const publishTrackSuccess = createAction('[Tracks] Put Success', props<{ track: ApiTrack }>());
 export const publishTrackFailure = createAction('[Tracks] Put Failure', props<{ error: string }>());
+
+export const deleteTrackRequest = createAction('[Tracks] Delete Request', props<{ trackId: string }>());
+export const deleteTrackSuccess = createAction('[Tracks] Delete Success', props<{ track: ApiTrack }>());
+export const deleteTrackFailure = createAction('[Tracks] Delete Failure', props<{ error: string }>());
+

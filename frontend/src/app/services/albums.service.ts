@@ -21,10 +21,14 @@ export class AlbumsService {
     Object.keys(albumData).forEach(key => {
       if (albumData[key] !== null) formData.append(key, albumData[key]);
     });
-    return this.http.post<Album>(env.apiUrl + '/albums', formData)
+    return this.http.post<Album>(env.apiUrl + '/albums', formData);
   }
 
   publishAlbum(albumId: string) {
     return this.http.post<ApiAlbum>(`${env.apiUrl}/albums/${albumId}/publish`, albumId);
+  }
+
+  deleteAlbum(albumId: string) {
+    return this.http.delete<ApiAlbum>(`${env.apiUrl}/albums/${albumId}`);
   }
 }

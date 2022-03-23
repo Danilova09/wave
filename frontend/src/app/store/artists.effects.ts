@@ -2,11 +2,18 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ArtistsService } from '../services/artists.service';
 import {
+  deleteArtistFailure,
+  deleteArtistRequest,
+  deleteArtistSuccess,
   fetchArtistsFailure,
   fetchArtistsRequest,
-  fetchArtistsSuccess, postArtistFailure,
+  fetchArtistsSuccess,
+  postArtistFailure,
   postArtistRequest,
-  postArtistSuccess, publishArtistFailure, publishArtistRequest, publishArtistSuccess
+  postArtistSuccess,
+  publishArtistFailure,
+  publishArtistRequest,
+  publishArtistSuccess
 } from './artists.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { HelpersService } from '../services/helpers.service';
@@ -22,14 +29,13 @@ export class ArtistsEffects {
     private helpers: HelpersService,
     private router: Router,
     private store: Store<AppState>,
-  ) {
-  }
+  ) {}
 
   fetchArtists = createEffect(() => this.actions.pipe(
     ofType(fetchArtistsRequest),
     mergeMap(() => this.artistsService.getArtists().pipe(
       map(artists => fetchArtistsSuccess({artists})),
-      catchError((e) => of(fetchArtistsFailure({error: e})))
+      catchError((error) => of(fetchArtistsFailure({error})))
     ))
   ));
 
@@ -41,7 +47,7 @@ export class ArtistsEffects {
         void this.router.navigate(['/']);
         this.helpers.openSnackbar('Artist created!');
       }),
-      catchError((e) => of(postArtistFailure({error: e})))
+      catchError((error) => of(postArtistFailure({error})))
     ))
   ));
 
@@ -53,7 +59,20 @@ export class ArtistsEffects {
         this.store.dispatch(fetchArtistsRequest());
         this.helpers.openSnackbar('Artist published!');
       }),
-      catchError((e) => of(publishArtistFailure({error: e})))
+      catchError((error) => of(publishArtistFailure({error})))
     ))
-  ))
+  ));
+
+
+  deleteArtist = createEffect(() => this.actions.pipe(
+    ofType(deleteArtistRequest),
+    mergeMap(({artistId}) => this.artistsService.deleteArtist(artistId).pipe(
+      map(() => deleteArtistSuccess()),
+      tap(() => {
+        this.store.dispatch(fetchArtistsRequest());
+        this.helpers.openSnackbar('Artist deleted');
+      }),
+      catchError((error) => of(deleteArtistFailure({error})))
+    ))
+  ));
 }

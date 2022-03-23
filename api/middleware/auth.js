@@ -5,7 +5,6 @@ const auth = async (req, res, next) => {
     if (!token) {
         return res.status(401).send({error: 'No token!'});
     }
-
     const user = await User.findOne({token});
 
     if (!user) {
@@ -13,7 +12,6 @@ const auth = async (req, res, next) => {
     }
 
     req.user = user;
-
     next();
 }
 

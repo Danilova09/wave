@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 
-
 router.get('/', auth, async (req, res, next) => {
     try {
         const trackHistory = await TrackHistory.find({user: req.user._id}).sort({datetime: -1}).populate('track');
@@ -14,8 +13,7 @@ router.get('/', auth, async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-})
-
+});
 
 router.post('/', auth, async (req, res, next) => {
     try {

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TracksService } from '../services/tracks.service';
 import {
+  deleteTrackFailure,
+  deleteTrackRequest,
+  deleteTrackSuccess,
   fetchTracksByAlbumFailure,
   fetchTracksByAlbumRequest,
   fetchTracksByAlbumSuccess,
@@ -14,13 +17,13 @@ import {
   postUsersTrackHistory,
   postUsersTrackHistoryFailure,
   postUsersTrackHistorySuccess,
+  publishTrackFailure,
   publishTrackRequest,
   publishTrackSuccess
 } from './tracks.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { HelpersService } from '../services/helpers.service';
-import { publishAlbumFailure } from './albums.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './types';
 
@@ -32,8 +35,7 @@ export class TracksEffects {
     private helpers: HelpersService,
     private router: Router,
     private store: Store<AppState>,
-  ) {
-  }
+  ) {}
 
   fetchTracks = createEffect(() => this.actions.pipe(
     ofType(fetchTracksByAlbumRequest),
@@ -64,25 +66,37 @@ export class TracksEffects {
     ))
   ));
 
-
   getUsersTrackHistory = createEffect(() => this.actions.pipe(
     ofType(getUsersTrackHistory),
-    mergeMap(({usersToken}) => this.tracksService.getTrackHistory(usersToken).pipe(
+    mergeMap(({usersToken}) => this.tracksService.getTrackHistory().pipe(
       map((usersTrackHistory) => getUsersTrackHistorySuccess({usersTrackHistory})),
       catchError((e) => of(getUsersTrackHistoryFailure({error: e})))
     ))
   ));
 
-  publishTrack= createEffect(() => this.actions.pipe(
+  publishTrack = createEffect(() => this.actions.pipe(
     ofType(publishTrackRequest),
     mergeMap(({trackId}) => this.tracksService.publishTrack(trackId).pipe(
       map((track) => publishTrackSuccess({track})),
-      tap((track) => {
-        const albumId = track.track.album;
+      tap(({track}) => {
+        const albumId = track.album;
         this.store.dispatch(fetchTracksByAlbumRequest({albumId}));
         this.helpers.openSnackbar('Track is published!');
       }),
-      catchError((e) => of(publishAlbumFailure({error: e})))
+      catchError((e) => of(publishTrackFailure({error: e})))
     ))
-  ))
+  ));
+
+  deleteTrack = createEffect(() => this.actions.pipe(
+    ofType(deleteTrackRequest),
+    mergeMap(({trackId}) => this.tracksService.deleteTrack(trackId).pipe(
+      map((track) => deleteTrackSuccess({track})),
+      tap(({track}) => {
+        const albumId = track.album;
+        this.store.dispatch(fetchTracksByAlbumRequest({albumId}));
+        this.helpers.openSnackbar('Track is deleted!');
+      }),
+      catchError((error) => of(deleteTrackFailure({error})))
+    ))
+  ));
 }

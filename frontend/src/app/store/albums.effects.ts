@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AlbumsService } from '../services/albums.service';
 import {
+  deleteAlbumRequest,
+  deleteAlbumSuccess,
+  deleteAlbumFailure,
   fetchAlbumsRequest,
   fetchAlbumsSuccess,
   postAlbumFailure,
@@ -26,8 +29,7 @@ export class AlbumsEffects {
     private store: Store<AppState>,
     private helpers: HelpersService,
     private router: Router,
-  ) {
-  }
+  ) {}
 
   fetchAlbums = createEffect(() => this.actions.pipe(
     ofType(fetchAlbumsRequest),
@@ -41,8 +43,8 @@ export class AlbumsEffects {
     ofType(postAlbumRequest),
     mergeMap(({albumData}) => this.albumsService.postAlbum(albumData).pipe(
       map((album) => postAlbumSuccess({album})),
-      tap((album) => {
-        const artist = album.album.artist;
+      tap(({album}) => {
+        const artist = album.artist;
         void this.router.navigate(
           ['/albums'],
           {queryParams: {artist}}
@@ -57,12 +59,25 @@ export class AlbumsEffects {
     ofType(publishAlbumRequest),
     mergeMap(({albumId}) => this.albumsService.publishAlbum(albumId).pipe(
       map((album) => publishAlbumSuccess({album})),
-      tap((album) => {
-        const artistId = album.album.artist;
+      tap(({album}) => {
+        const artistId = album.artist;
         this.store.dispatch(fetchAlbumsRequest({artistId}));
         this.helpers.openSnackbar('Album is published!');
       }),
       catchError((e) => of(publishAlbumFailure({error: e})))
     ))
-  ))
+  ));
+
+  deleteAlbum = createEffect(() => this.actions.pipe(
+    ofType(deleteAlbumRequest),
+    mergeMap(({albumId}) => this.albumsService.deleteAlbum(albumId).pipe(
+      map((album) => deleteAlbumSuccess({album})),
+      tap(({album}) => {
+        const artistId = album.artist;
+        this.store.dispatch(fetchAlbumsRequest({artistId}));
+        this.helpers.openSnackbar('Album is deleted!');
+      }),
+      catchError((error) => of(deleteAlbumFailure({error})))
+    ))
+  ));
 }

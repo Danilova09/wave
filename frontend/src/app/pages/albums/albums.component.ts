@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Album } from '../../models/album.model';
-import { fetchAlbumsRequest, publishAlbumRequest } from '../../store/albums.actions';
+import { deleteAlbumRequest, fetchAlbumsRequest, publishAlbumRequest } from '../../store/albums.actions';
 import { AppState } from '../../store/types';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
@@ -36,5 +36,9 @@ export class AlbumsComponent implements OnInit {
 
   publish(albumId: string) {
     this.store.dispatch(publishAlbumRequest({albumId}));
+  }
+
+  delete(albumId: string) {
+    this.store.dispatch(deleteAlbumRequest({albumId}));
   }
 }

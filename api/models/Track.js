@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TrackSchema= new mongoose.Schema({
-    title:  {
+const TrackSchema = new mongoose.Schema({
+    title: {
         type: String,
         required: true,
     },

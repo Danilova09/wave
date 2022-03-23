@@ -3,27 +3,31 @@
   <mat-spinner color="primary" style="margin-top: 50px;"></mat-spinner>
 </div>
 <ng-template #artistsArea>
-  <div *appHasRoles="['admin'] else UserAndAnonym" class="artists-list" style="padding: 50px;" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="15px" ngClass.gt-xs="ml-15">
-    <mat-card  style="cursor: pointer;"
+  <div *appHasRoles="['admin'] else UserAndAnonym" class="artists-list" style="padding: 50px;" fxLayout.xs="column"
+       fxLayout="row wrap" fxLayoutGap="15px" ngClass.gt-xs="ml-15">
+    <mat-card style="cursor: pointer;"
               *ngFor="let artist of (artists | async)" fxFlex.sm="0 1 calc(50%-15px)" fxFlex.md="0 1 calc(33%-15px)"
               fxFlex.gt-md="0 1 calc(25%-15px)">
       <img mat-card-image [src]="[env.artistsUploadPath + artist.image]" [alt]="artist.name">
       <mat-card-content>
         <mat-card-title>{{ artist.name }}</mat-card-title>
-        <mat-card-subtitle style="color: red;" *ngIf="!artist.isPublished"><strong>unpublished</strong></mat-card-subtitle>
+        <mat-card-subtitle style="color: red;" *ngIf="!artist.isPublished"><strong>unpublished</strong>
+        </mat-card-subtitle>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button [routerLink]="['/albums']" [queryParams]="{ artist: artist._id }">ALBUMS</button>
         <button mat-button *ngIf="!artist.isPublished" (click)="publish(artist._id)">PUBLISH</button>
+        <button mat-button (click)="delete(artist._id)">DELETE</button>
       </mat-card-actions>
     </mat-card>
   </div>
-
   <ng-template #UserAndAnonym>
-    <div class="artists-list" style="padding: 50px;" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="15px" ngClass.gt-xs="ml-15">
-      <mat-card  style="cursor: pointer;"
-                 *ngFor="let artist of (artists | async) | artists" fxFlex.sm="0 1 calc(50%-15px)" fxFlex.md="0 1 calc(33%-15px)"
-                 fxFlex.gt-md="0 1 calc(25%-15px)">
+    <div class="artists-list" style="padding: 50px;" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="15px"
+         ngClass.gt-xs="ml-15">
+      <mat-card style="cursor: pointer;"
+                *ngFor="let artist of (artists | async) | artists" fxFlex.sm="0 1 calc(50%-15px)"
+                fxFlex.md="0 1 calc(33%-15px)"
+                fxFlex.gt-md="0 1 calc(25%-15px)">
         <img mat-card-image [src]="[env.artistsUploadPath + artist.image]" [alt]="artist.name">
         <mat-card-content>
           <mat-card-title>{{ artist.name }}</mat-card-title>

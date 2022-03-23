@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpErrorResponse
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { User } from './models/user.model';
 import { AppState } from './store/types';
@@ -17,7 +12,6 @@ import { logoutUser } from './store/users.actions';
 export class AuthInterceptor implements HttpInterceptor {
   user!: Observable<null | User>;
   token: null | string = null;
-
 
   constructor(
     private store: Store<AppState>,

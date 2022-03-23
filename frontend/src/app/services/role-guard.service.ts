@@ -32,6 +32,4 @@ export class RoleGuardService implements CanActivate {
       })
     )
   }
-
-
 }

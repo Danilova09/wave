@@ -1,6 +1,9 @@
 import { ArtistsState } from './types';
 import { createReducer, on } from '@ngrx/store';
 import {
+  deleteArtistFailure,
+  deleteArtistRequest,
+  deleteArtistSuccess,
   fetchArtistsFailure,
   fetchArtistsRequest,
   fetchArtistsSuccess,
@@ -20,6 +23,8 @@ const initialState: ArtistsState = {
   postError: null,
   publishLoading: false,
   publishError: null,
+  deleteLoading: false,
+  deleteError: null,
 };
 
 export const artistsReducer = createReducer(
@@ -33,4 +38,7 @@ export const artistsReducer = createReducer(
   on(publishArtistRequest, (state) => ({...state, publishLoading: true})),
   on(publishArtistSuccess, (state) => ({...state, publishLoading: false})),
   on(publishArtistFailure, (state, {error}) => ({...state, publishLoading: false, publishError: error})),
+  on(deleteArtistRequest, (state) => ({...state, deleteLoading: true})),
+  on(deleteArtistSuccess, (state) => ({...state, deleteLoading: false})),
+  on(deleteArtistFailure, (state, {error}) => ({...state, deleteLoading: false, deleteError: error})),
 );

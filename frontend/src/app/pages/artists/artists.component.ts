@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Artist } from '../../models/artist.model';
 import { Store } from '@ngrx/store';
-import { fetchArtistsRequest, publishArtistRequest } from '../../store/artists.actions';
+import { deleteArtistRequest, fetchArtistsRequest, publishArtistRequest } from '../../store/artists.actions';
 import { AppState } from '../../store/types';
 import { environment } from '../../../environments/environment';
 
@@ -29,5 +29,9 @@ export class ArtistsComponent implements OnInit {
 
   publish(artistId: string) {
     this.store.dispatch(publishArtistRequest({artistId}))
+  }
+
+  delete(artistId: string) {
+   this.store.dispatch(deleteArtistRequest({artistId}));
   }
 }

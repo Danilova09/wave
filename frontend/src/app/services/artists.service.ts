@@ -25,4 +25,8 @@ export class ArtistsService {
   publishArtist(artistId: string) {
     return this.http.post(`${env.apiUrl}/artists/${artistId}/publish`, artistId);
   }
+
+  deleteArtist(artistId: string) {
+    return this.http.delete(`${env.apiUrl}/artists/${artistId}`);
+  }
 }

@@ -20,6 +20,7 @@
         <mat-card-actions>
           <button mat-button [routerLink]="['/tracks/byAlbum/', album._id]">TRACK-LIST</button>
           <button mat-button *ngIf="!album.isPublished" (click)="publish(album._id)">PUBLISH</button>
+          <button mat-button (click)="delete(album._id)">DELETE</button>
         </mat-card-actions>
       </mat-card>
     </div>

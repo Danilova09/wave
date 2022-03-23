@@ -28,7 +28,7 @@ const run = async () => {
             name: 'Lil Nas X',
             info: 'American rapper and singer',
             image: 'lilnas.jpg',
-            isPublished: true,
+            isPublished: false,
         }, {
             name: 'Billie Eilish',
             info: 'American singer',
@@ -48,12 +48,12 @@ const run = async () => {
             name: 'Dua Lipa',
             info: 'English singer and songwriter',
             image: 'dua-lipa.jpg',
-            isPublished: true,
+            isPublished: false,
         }, {
             name: 'Selena Gomez',
             info: 'American singer, actress, and producer.',
             image: 'selena-gomez.jpg',
-            isPublished: true,
+            isPublished: false,
         }
     );
 
@@ -81,7 +81,7 @@ const run = async () => {
             title: 'Sweetener',
             releaseDate: '2018',
             image: 'sweetener.png',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: Malone,
             title: 'Beerbongs & Bentleys',
@@ -99,7 +99,7 @@ const run = async () => {
             title: 'Hollywood Bleeding',
             releaseDate: '2019',
             image: 'hollywood-bleeding.jpeg',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: LilNasX,
             title: 'Industry Baby',
@@ -117,7 +117,7 @@ const run = async () => {
             title: 'Montero',
             releaseDate: '2018',
             image: 'montero.jpeg',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: BillieEilish,
             title: 'Happier than ever',
@@ -135,7 +135,7 @@ const run = async () => {
             title: 'Dont`t smile at me',
             releaseDate: '2017',
             image: 'dont-smile-at-me.jpg',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: TheWeeknd,
             title: 'Dawn',
@@ -153,7 +153,7 @@ const run = async () => {
             title: 'Starboy',
             releaseDate: '2016',
             image: 'starboy.png',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: Joji,
             title: 'Nectar',
@@ -171,7 +171,7 @@ const run = async () => {
             title: 'In Tongues',
             releaseDate: '2017',
             image: 'in-tongues.jpg',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: DuaLipa,
             title: 'Future Nostalgia',
@@ -189,7 +189,7 @@ const run = async () => {
             title: 'Dua Lipa: Complete Edition',
             releaseDate: '2017',
             image: 'new-rules.jpg',
-            isPublished: true,
+            isPublished: false,
         }, {
             artist: SelenaGomez,
             title: 'Rare',
@@ -207,7 +207,7 @@ const run = async () => {
             title: 'Stars Dance',
             releaseDate: '2013',
             image: 'stars-dance.jpg',
-            isPublished: true,
+            isPublished: false,
         }
     );
 
@@ -235,7 +235,7 @@ const run = async () => {
             title: 'Side to Side',
             album: DangerousWomen,
             duration: '3:46',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Shut UP',
             album: Positions,
@@ -260,7 +260,7 @@ const run = async () => {
             title: 'Of the Table',
             album: Positions,
             duration: '3:59',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Raindrops(An Angel Cried)',
             album: Sweetener,
@@ -285,7 +285,7 @@ const run = async () => {
             title: 'God Is a Woman',
             album: Sweetener,
             duration: '3:17',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Paranoid',
             album: BeerbongsAndBentleys,
@@ -310,7 +310,7 @@ const run = async () => {
             title: 'Better now',
             album: BeerbongsAndBentleys,
             duration: '3:51',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Broken Whiskey Glass',
             album: Stoney,
@@ -318,7 +318,6 @@ const run = async () => {
             isPublished: true,
         }, {
             title: 'Deja Vu',
-            isPublished: true,
             album: Stoney,
             duration: '3:54',
             isPublished: true,
@@ -336,7 +335,7 @@ const run = async () => {
             title: 'Go Flex',
             album: Stoney,
             duration: '3:00',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: "Hollywood's Bleeding",
             album: HollywoodBleeding,
@@ -361,7 +360,7 @@ const run = async () => {
             title: 'Take What You Want',
             album: HollywoodBleeding,
             duration: '3:50',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Montero',
             album: Montero,
@@ -386,7 +385,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: Montero,
             duration: '2:49',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Montero',
             album: IndustryBaby,
@@ -411,7 +410,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: IndustryBaby,
             duration: '2:49',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Montero',
             album: Canvas,
@@ -436,7 +435,7 @@ const run = async () => {
             title: 'Sun Goes Down',
             album: Canvas,
             duration: '2:49',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Getting Older',
             album: HappierThenEver,
@@ -461,7 +460,7 @@ const run = async () => {
             title: 'Not My Responsibility',
             album: HappierThenEver,
             duration: '3:48',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Bad Guy',
             album: WhenWeAllFallAsleep,
@@ -486,7 +485,7 @@ const run = async () => {
             title: 'bury a friend',
             album: WhenWeAllFallAsleep,
             duration: '2:50',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'COPYCAT',
             album: DontSmileAtMe,
@@ -511,7 +510,7 @@ const run = async () => {
             title: '&burn',
             album: DontSmileAtMe,
             duration: '2:59',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'How Do I Make You Love Me',
             album: Dawn,
@@ -531,7 +530,7 @@ const run = async () => {
             title: 'Best Friends',
             album: Dawn,
             duration: '2:44',
-            isPublished: true,
+            isPublished: false,
         }, {
             title: 'Starry Eyes',
             album: Dawn,

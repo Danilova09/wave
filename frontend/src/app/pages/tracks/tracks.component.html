@@ -8,10 +8,11 @@
     <mat-list-item class="list-item" role="listitem" *ngFor="let track of (trackData | async)?.tracks">
       <mat-icon style="width: 10%; cursor: pointer" (click)="addToTrackHistory(track._id)">play_circle_outline
       </mat-icon>
-      <span style="width: 30%; cursor: pointer" (click)="addToTrackHistory(track._id)">{{ track?.title }}</span>
-      <span style="width: 30%">{{ track?.duration }}</span>
+      <span style="width: 25%; cursor: pointer" (click)="addToTrackHistory(track._id)">{{ track?.title }}</span>
+      <span style="width: 20%">{{ track?.duration }}</span>
       <span *ngIf="!track.isPublished" style="width: 20%; color: red;">unpublished</span>
-      <button style="width: 10%;" mat-raised-button color="primary" *ngIf="!track.isPublished" (click)="publish(track._id)">PUBLISH</button>
+      <button style="width: 10%; margin: 0 10px;" mat-raised-button color="primary" *ngIf="!track.isPublished" (click)="publish(track._id)">PUBLISH</button>
+      <button style="width: 10%;" mat-raised-button color="warn" (click)="delete(track._id)">DELETE</button>
     </mat-list-item>
   </mat-list>
 </div>

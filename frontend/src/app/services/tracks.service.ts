@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiHistoryData, ApiTrack, Track, TrackData, TrackHistory, TrackHistoryData } from '../models/track.model';
 import { environment as env } from '../../environments/environment';
-import { tap } from 'rxjs';
 
 
 @Injectable({
@@ -23,11 +22,15 @@ export class TracksService {
     return this.http.post<ApiHistoryData>(env.apiUrl + '/track_history', apiHistoryData);
   }
 
-  getTrackHistory(usersToken: undefined | string) {
+  getTrackHistory() {
     return this.http.get<TrackHistory[]>(env.apiUrl + '/track_history');
   }
 
   publishTrack(trackId: string) {
     return this.http.post<ApiTrack>(`${env.apiUrl}/tracks/${trackId}/publish`, trackId);
+  }
+
+  deleteTrack(trackId: string) {
+    return this.http.delete<ApiTrack>(`${env.apiUrl}/tracks/${trackId}`);
   }
 }

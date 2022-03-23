@@ -2,10 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../../store/types';
 import { Store } from '@ngrx/store';
-import { fetchTracksByAlbumRequest, postUsersTrackHistory, publishTrackRequest } from '../../store/tracks.actions';
+import {
+  deleteTrackRequest,
+  fetchTracksByAlbumRequest,
+  postUsersTrackHistory,
+  publishTrackRequest
+} from '../../store/tracks.actions';
 import { Observable } from 'rxjs';
 import { TrackHistoryData } from '../../models/track.model';
 import { environment } from '../../../environments/environment';
+import { TracksService } from '../../services/tracks.service';
 
 @Component({
   selector: 'app-tracks',
@@ -20,6 +26,7 @@ export class TracksComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private route: ActivatedRoute,
+    private tracksService: TracksService,
   ) {
     this.trackData = store.select(state => state.tracks.trackData);
     store.select(state => state.users.user).subscribe(user => {
@@ -42,5 +49,9 @@ export class TracksComponent implements OnInit {
 
   publish(trackId: string) {
     this.store.dispatch(publishTrackRequest({trackId}));
+  }
+
+  delete(trackId: string) {
+    this.store.dispatch(deleteTrackRequest({trackId}));
   }
 }
