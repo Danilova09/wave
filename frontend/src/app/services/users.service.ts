@@ -2,12 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginUserData, RegisterUserData, User } from '../models/user.model';
 import { environment as env } from '../../environments/environment';
+import { tap } from 'rxjs';
+import { SocialUser } from 'angularx-social-login';
+import { AppState } from '../store/types';
+import { Store } from '@ngrx/store';
+import { loginUserSuccess } from '../store/users.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store<AppState>) {
+  }
 
   registerUser(userData: RegisterUserData) {
     const formData = new FormData();
@@ -19,6 +25,12 @@ export class UsersService {
 
   login(userData: LoginUserData) {
     return this.http.post<User>(env.apiUrl + '/users/sessions', userData);
+  }
+
+  loginWithFb(userData: SocialUser) {
+    return this.http.post<User>(env.apiUrl + '/users/facebookLogin', userData).pipe(tap(user => {
+      console.log(user);
+    }));
   }
 
   logout() {

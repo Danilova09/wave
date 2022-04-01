@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'http://localhost:8000',
   artistsUploadPath: 'http://localhost:8000/uploads/images/artists/',
   albumsUploadPath: 'http://localhost:8000/uploads/images/albums/',
+  fbAppId: '705997010842508',
 };
 
 /*

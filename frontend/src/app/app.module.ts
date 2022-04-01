@@ -39,6 +39,22 @@ import { MatSelectModule } from '@angular/material/select';
 import { ArtistsPipe } from './pipes/artists.pipe';
 import { AlbumsPipe } from './pipes/albums.pipe';
 import { TracksPipe } from './pipes/tracks.pipe';
+import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { environment } from '../environments/environment';
+
+
+const socialConfig: SocialAuthServiceConfig = {
+  autoLogin: false,
+  providers: [
+    {
+      id: FacebookLoginProvider.PROVIDER_ID,
+      provider: new FacebookLoginProvider(environment.fbAppId, {
+        scope: 'email,public_profile'
+      })
+    }
+  ]
+};
+
 
 @NgModule({
   declarations: [
@@ -61,31 +77,33 @@ import { TracksPipe } from './pipes/tracks.pipe';
     AlbumsPipe,
     TracksPipe,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        HttpClientModule,
-        FormsModule,
-        ValidateEqualModule,
-        MatSnackBarModule,
-        MatCardModule,
-        FlexModule,
-        MatProgressSpinnerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        AppRoutingModule,
-        AppStoreModule,
-        MatMenuModule,
-        MatSelectModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    HttpClientModule,
+    FormsModule,
+    ValidateEqualModule,
+    MatSnackBarModule,
+    MatCardModule,
+    FlexModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AppRoutingModule,
+    AppStoreModule,
+    MatMenuModule,
+    MatSelectModule,
+    SocialLoginModule,
+  ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: 'SocialAuthServiceConfig', useValue: socialConfig}
   ],
   bootstrap: [AppComponent]
 })

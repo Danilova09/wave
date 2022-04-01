@@ -817,14 +817,14 @@ const run = async () => {
     await User.create({
         avatar: null,
         displayName: 'user',
-        email: 'user@shop.com',
+        email: 'user@gmail.com',
         password: 'user',
         token: 'user',
         role: 'user',
     }, {
         avatar: null,
         displayName: 'admin',
-        email: 'admin@shop.com',
+        email: 'admin@gmail.com',
         password: 'admin',
         token: 'admin',
         role: 'admin'

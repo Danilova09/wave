@@ -9,5 +9,9 @@ module.exports = {
     mongo: {
         db: 'mongodb://localhost/wavefm',
         options: {useNewUrlParser: true},
+    },
+    facebook: {
+        appId: '705997010842508',
+        appSecret: '0f12bc24b220de5ebec43fe7d4572cd4',
     }
 }
