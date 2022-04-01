@@ -2,11 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/types';
-import { fetchArtistsRequest, postArtistRequest } from '../../store/artists.actions';
+import { fetchArtistsRequest } from '../../store/artists.actions';
 import { Observable } from 'rxjs';
 import { Artist } from '../../models/artist.model';
-import { ArtistsService } from '../../services/artists.service';
-import { AlbumsService } from '../../services/albums.service';
 import { postAlbumRequest } from '../../store/albums.actions';
 
 @Component({

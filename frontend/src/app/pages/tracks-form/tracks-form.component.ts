@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { Artist } from '../../models/artist.model';
 import { fetchArtistsRequest } from '../../store/artists.actions';
 import { fetchAlbumsRequest } from '../../store/albums.actions';
-import { TracksService } from '../../services/tracks.service';
 import { postTrackRequest } from '../../store/tracks.actions';
 
 @Component({

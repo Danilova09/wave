@@ -6,7 +6,6 @@ import { deleteAlbumRequest, fetchAlbumsRequest, publishAlbumRequest } from '../
 import { AppState } from '../../store/types';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-albums',

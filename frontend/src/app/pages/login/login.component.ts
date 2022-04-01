@@ -4,11 +4,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../store/types';
 import { Observable, Subscription } from 'rxjs';
 import { LoginError, LoginUserData, User } from '../../models/user.model';
-import { loginUserRequest, loginUserSuccess } from '../../store/users.actions';
+import { loginUserRequest, loginWithFbRequest } from '../../store/users.actions';
 import { FacebookLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -17,39 +14,29 @@ import { UsersService } from '../../services/users.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('f') form!: NgForm;
+  user!: null | User;
   loading: Observable<boolean>;
   error: Observable<null | LoginError>;
   authStateSub!: Subscription;
   sub!: Subscription;
+  userData!: SocialUser;
 
   constructor(
     private store: Store<AppState>,
     private auth: SocialAuthService,
-    private http: HttpClient,
-    private usersService: UsersService,
   ) {
     this.loading = store.select(state => state.users.loginLoading);
     this.error = store.select(state => state.users.loginError);
+    store.select(state => state.users.user).subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit(): void {
-    this.authStateSub = this.auth.authState.subscribe((user: SocialUser) => {
-      this.sub = this.http.post<User>(environment.apiUrl + '/users/facebookLogin', {
-          authToken: user.authToken,
-          id: user.id,
-          email: user.email,
-          name: user.name
-        }).subscribe(user => {
-          console.log(user);
-          this.store.dispatch(loginUserSuccess({user}));
-        });
-      });
-
-
-    //   this.sub = this.usersService.loginWithFb(user).subscribe( {
-    //     next: (user) => this.store.dispatch(loginUserSuccess({user}))
-    //   });
-    // });
+    this.authStateSub = this.auth.authState.subscribe((userData: SocialUser) => {
+      this.userData = userData;
+      this.store.dispatch(loginWithFbRequest({userData: this.userData}));
+    });
   }
 
   onSubmit() {
@@ -63,7 +50,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.authStateSub.unsubscribe();
-    this.sub.unsubscribe();
   }
 }
 

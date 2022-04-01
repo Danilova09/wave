@@ -6,6 +6,7 @@ import {
   loginUserFailure,
   loginUserRequest,
   loginUserSuccess,
+  loginWithFbRequest,
   logoutUser,
   logoutUserRequest,
   registerUserFailure,
@@ -14,8 +15,6 @@ import {
 } from './users.actions';
 import { map, mergeMap, tap } from 'rxjs';
 import { HelpersService } from '../services/helpers.service';
-import { AppState } from './types';
-import { Store } from '@ngrx/store';
 
 @Injectable()
 export class UsersEffects {
@@ -24,9 +23,7 @@ export class UsersEffects {
     private usersService: UsersService,
     private router: Router,
     private helpers: HelpersService,
-    private store: Store<AppState>
-  ) {
-  }
+  ) {}
 
   registerUser = createEffect(() => this.actions.pipe(
     ofType(registerUserRequest),
@@ -43,6 +40,18 @@ export class UsersEffects {
   loginUser = createEffect(() => this.actions.pipe(
     ofType(loginUserRequest),
     mergeMap(({userData}) => this.usersService.login(userData).pipe(
+      map(user => loginUserSuccess({user})),
+      tap(() => {
+        this.helpers.openSnackbar('Login successful');
+        void this.router.navigate(['/']);
+      }),
+      this.helpers.catchServerError(loginUserFailure)
+    ))
+  ));
+
+  loginWithFb = createEffect(() => this.actions.pipe(
+    ofType(loginWithFbRequest),
+    mergeMap(({userData}) => this.usersService.loginWithFb(userData).pipe(
       map(user => loginUserSuccess({user})),
       tap(() => {
         this.helpers.openSnackbar('Login successful');

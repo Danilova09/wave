@@ -33,13 +33,12 @@
         Password is required!
       </mat-error>
     </mat-form-field>
-
     <div fxLayout="row" fxLayoutAlign="center" style="margin-bottom: 16px">
       <a routerLink="/register">Don't have an account? Sign Up</a>
     </div>
-
     <button
-      type="submit"
+      type="button"
+      (click)="onSubmit()"
       mat-raised-button
       color="primary"
       [disabled]="f.invalid"
@@ -54,7 +53,7 @@
       style="margin-top: 16px;"
     >
       <img src="assets/icons/fb.svg" alt="facebook"/>
-      &nbsp; &nbsp;
+      &nbsp; &nbsp
       SING IN WITH FACEBOOK
     </button>
   </form>

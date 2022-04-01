@@ -1,7 +1,7 @@
 <div class="tracks-block" *appHasRoles="['admin'] else UserAndAnonym">
   <div class="artist-block">
     <h2>{{(trackData | async)?.album?.title }}  {{(trackData | async)?.album?.releaseDate }}</h2>
-    <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
+    <img class="artist-img" *ngIf="env.albumsUploadPath + (trackData | async)?.album?.image" [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
          [alt]="(trackData | async)?.album?.title">
   </div>
   <mat-list role="list" class="tracks-list">
@@ -21,7 +21,8 @@
   <div class="tracks-block">
     <div class="artist-block">
       <h2>{{(trackData | async)?.album?.title }}  {{(trackData | async)?.album?.releaseDate }}</h2>
-      <img class="artist-img" [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
+      <img class="artist-img" *ngIf="(trackData | async)?.album?.image"
+           [src]="env.albumsUploadPath + (trackData | async)?.album?.image"
            [alt]="(trackData | async)?.album?.title">
     </div>
     <mat-list role="list" class="tracks-list">

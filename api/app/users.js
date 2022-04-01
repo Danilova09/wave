@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const config = require('../config');
 const axios = require("axios");
 const router = express.Router();
+const download = require('image-downloader');
 
 
 const storage = multer.diskStorage({
@@ -107,6 +108,11 @@ router.post('/facebookLogin', async (req, res, next) => {
 
         let user = await User.findOne({facebookId: req.body.id});
 
+        const filename = nanoid() + '.jpeg';
+        const usersAvatarUrl = req.body.response.picture.data.url;
+        const options = {url: usersAvatarUrl, dest: config.avatarsUploadPath + '/' + filename};
+
+        await download.image(options);
 
         if (!user) {
             user = new User({
@@ -114,12 +120,12 @@ router.post('/facebookLogin', async (req, res, next) => {
                 password: nanoid(),
                 facebookId: req.body.id,
                 displayName: req.body.name,
+                avatar: filename,
             });
         }
 
         user.generateToken();
         await user.save();
-
         return res.send(user);
     } catch (e) {
         next(e);

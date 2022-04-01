@@ -4,6 +4,7 @@ import {
   loginUserFailure,
   loginUserRequest,
   loginUserSuccess,
+  loginWithFbRequest,
   logoutUser,
   registerUserFailure,
   registerUserRequest,
@@ -26,5 +27,6 @@ export const usersReducer = createReducer(
   on(loginUserRequest, state => ({...state, loginLoading: true, loginError: null,})),
   on(loginUserSuccess, (state, {user}) => ({...state, loginLoading: false, user})),
   on(loginUserFailure, (state, {error}) => ({...state, loginLoading: false, loginError: error})),
-  on(logoutUser, state => ({...state, user: null}))
+  on(logoutUser, state => ({...state, user: null})),
+  on(loginWithFbRequest, (state) => ({...state, loginLoading: true})),
 );
